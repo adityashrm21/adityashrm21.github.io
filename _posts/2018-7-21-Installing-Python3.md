@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: Installing Python3 on Macbook
