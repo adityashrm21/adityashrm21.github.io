@@ -1,10 +1,38 @@
 ---
 layout: post
-title: You're up and running!
+title: Installing and Setting Up Jupyter Notebook on Macbook
 ---
 
-Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).
+Here are the steps you need to follow in order to set up Jupyter Notebook on your Macbook:
 
-![_config.yml]({{ site.baseurl }}/images/config.png)
+1. Go to the Anaconda website and download the installer package for Mac OS:
+https://www.anaconda.com/download/#macos
 
-The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.
+2. After the download completes, run the installer and follow the steps in order to install Anaconda on your machine.
+
+3. Now open your terminal and try to run the command:
+>jupyter notebook
+
+You will get an error saying:
+* jupyter : command not found
+
+This is because you need to add the anaconda path to your bash profile.
+
+4. Open the bash profile using the command:
+>vi .bash_profile
+
+5. The file must be having content similar to:
+> added by Anaconda3 5.2.0 installer
+>
+>export PATH="/anaconda3/bin:$PATH"
+
+6. Change it to:
+> added by Anaconda3 5.2.0 installer
+>
+>export PATH="$PATH:/anaconda3/bin"
+
+7. Restart your terminal
+8. Try running the jupyter notebook again:
+>jupyter notebook
+
+9. The server should run on **localhost:8888**.
