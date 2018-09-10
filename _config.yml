@@ -5,6 +5,8 @@
 # Name of your site (displayed in the header)
 name: Aditya Sharma
 
+author: adityashrm21
+
 # Short bio or description (displayed in the header)
 description: Data Science | Artificial Intelligence | Machine Learning
 
@@ -19,10 +21,10 @@ avatar: https://scontent-sea1-1.xx.fbcdn.net/v/t31.0-8/16836275_1371837592866969
 footer-links:
   dribbble:
   email: adityashrm21@gmail.com
-  facebook: adityashrm21
+  facebook:
   flickr:
   github: adityashrm21
-  instagram: __djentleman__
+  instagram:
   linkedin: adityashrm21/
   pinterest:
   rss: # just type anything here for a working RSS icon
