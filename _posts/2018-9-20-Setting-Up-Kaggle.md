@@ -47,7 +47,8 @@ There are two ways to do this:
   And it should work this time. You can actually export this binary path to the environment if you don't want to type the whole path again and again.
 
 **5. Using the API**
-Now that you've set up the API, you can start using it. You can get the help for the api using `kaggle --help`. If you want help regarding a more specific command use `--help` after that command. For example, `kaggle dataset --help`. For a more detailed description of everything and other information, go to the [kaggle-api GitHub repository](https://github.com/Kaggle/kaggle-api).
+
+- Now that you've set up the API, you can start using it. You can get the help for the api using `kaggle --help`. If you want help regarding a more specific command use `--help` after that command. For example, `kaggle dataset --help`. For a more detailed description of everything and other information, go to the [kaggle-api GitHub repository](https://github.com/Kaggle/kaggle-api).
 
 Sources:
 1. [kaggle-api GitHub repository](https://github.com/Kaggle/kaggle-api)
