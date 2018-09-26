@@ -1,6 +1,6 @@
 ##### A simple HTTP and HTTPS sniffing tool created using Raspberry Pi (only for educational purposes)
 
-All the relevant files can be found on my [GitHub repo](https://github.com/adityashrm21/RaspberryPi-Packet-Sniffer)
+All the relevant files can be found on my [GitHub repo](https://github.com/adityashrm21/RaspberryPi-Packet-Sniffer).
 
 ### Setting up your Raspberry Pi
 
