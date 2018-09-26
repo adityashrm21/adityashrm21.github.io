@@ -1,4 +1,3 @@
-# RaspberryPi-Packet-Sniffer
 ##### A simple HTTP and HTTPS sniffing tool created using Raspberry Pi (only for educational purposes)
 
 ### Setting up your Raspberry Pi
