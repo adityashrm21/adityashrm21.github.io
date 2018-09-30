@@ -20,7 +20,7 @@ Let's get started!
   - Git Plus: Menu on the atom command palette.
 - You can also right click on any file or project folder and select `Git` option from the menu and choose the operation you want to perform on the file or folder.
 - You will definitely need to type in the commit message though (no escape from that!).
-- After typing in the message just save the commit message file that pops up and a `git commit` command will be issued.
+- After typing in the message just save the COMMIT_EDITMSG file that pops up and a `git commit` command will be issued.
 - To push the changes to remote repository, just choose `Git push` from the Git submenu.
 - Pulling any changes is also as simple as that - Just select the `Git pull` from the submenu. Of course, the other commands can also be directly used from the menu.
 - I found this package quite useful and I am definitely going to dig more into it! Hope you like it too.
