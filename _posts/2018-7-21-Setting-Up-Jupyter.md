@@ -13,10 +13,8 @@ https://www.anaconda.com/download/#macos<br><br>
 jupyter notebook
 ```
 You will get an error saying:
-* jupyter : command not found
-
+* jupyter : command not found<br>
 This is because you need to add the anaconda path to your bash profile.
-
 4. Open the bash profile using the command:
 ```bash
 vi .bash_profile
