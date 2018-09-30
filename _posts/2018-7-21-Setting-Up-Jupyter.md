@@ -6,10 +6,9 @@ title: Installing and Setting Up Jupyter Notebook on Macbook
 Here are the steps you need to follow in order to set up Jupyter Notebook on your Macbook:
 
 1. Go to the Anaconda website and download the installer package for Mac OS:
-https://www.anaconda.com/download/#macos
-
+https://www.anaconda.com/download/#macos<br><br>
 2. After the download completes, run the installer and follow the steps in order to install Anaconda on your machine.
-
+<br>
 3. Now open your terminal and try to run the command:
 ```bash
 jupyter notebook
@@ -23,6 +22,7 @@ This is because you need to add the anaconda path to your bash profile.
 ```bash
 vi .bash_profile
 ```
+
 5. The file must be having content similar to:
 > added by Anaconda3 5.2.0 installer
 >
@@ -34,7 +34,7 @@ vi .bash_profile
 >export PATH="$PATH:/anaconda3/bin"
 
 7. Restart your terminal
-
+<br>
 8. Try running the jupyter notebook again:
 ```bash
 jupyter notebook

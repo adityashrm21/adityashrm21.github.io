@@ -12,35 +12,35 @@ Let's get started!
 **1. Installing the library**
 
 There are two ways to do this:
-- Using the command `pip install kaggle`
+- Using the command `pip install kaggle`<br><br>
 - Using the command `pip install --user kaggle`
 
 *Note: Avoid using `sudo pip install kaggle` if you don't want to face unnecessary problems or unless you know what you're doing.*
 
 **2. Setting up the API token**
 
-- Go to the [kaggle website](https://www.kaggle.com).
-- Click on `Your profile` button on the top right and then select `My Account`.
-- Scroll down to the `API` section and click on the `Create New API Token` button.
+- Go to the [kaggle website](https://www.kaggle.com).<br><br>
+- Click on `Your profile` button on the top right and then select `My Account`.<br><br>
+- Scroll down to the `API` section and click on the `Create New API Token` button.<br><br>
 - It will initiate the download of a file call `kaggle.json`. Save the file at a known location on your machine.
 
 **3. place the `.json` file at the correct location**
 
 - Move the downloaded file to a location `~/.kaggle/kaggle.json`. If you don't have the .kaggle folder in your home directory, you can create one using the command:
-  - `mkdir ~/.kaggle`
+  - `mkdir ~/.kaggle`<br><br>
 - Now move the downloaded file to this location using:
-  - `mv <location>/kaggle.json ~/.kaggle/kaggle.json`
+  - `mv <location>/kaggle.json ~/.kaggle/kaggle.json`<br><br>
 - You need to give proper permissions to the file (since this is a hidden folder):
   - `chmod 600 ~/.kaggle/kaggle.json`
 
 **4. Checking if it works**
 
-- Run the command `kaggle competitions list`.
-- If you see a list of active competitions, you're done setting the API up.
+- Run the command `kaggle competitions list`.<br><br>
+- If you see a list of active competitions, you're done setting the API up.<br><br>
 - If you don't, try looking at the location of kaggle by using the command:
   - `pip uninstall kaggle`
 
-  This will ask you to confirm whether you want to uninstall by telling you the location of kaggle on your machine.
+  This will ask you to confirm whether you want to uninstall by telling you the location of kaggle on your machine.<br><br>
 - So if you find the location such as `~/.local/bin/kaggle`, try running the kaggle command as:
   - `~/.local/bin/kaggle competitions list`
 

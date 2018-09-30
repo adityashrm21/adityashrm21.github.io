@@ -23,5 +23,4 @@ python --version
 brew install python3
 ````
 
-4. And you're done! 
-
+4. And you're done!
