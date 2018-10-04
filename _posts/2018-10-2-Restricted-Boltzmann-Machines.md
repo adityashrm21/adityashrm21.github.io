@@ -50,7 +50,7 @@ So the equation that we get in this step would be,
 
 $$ \textbf{h}^{(1)} = S(\textbf{v}^{(0)T}W + \textbf{a})$$
 
-where $$\textbf{h}^{(1)}$$ and $$\textbf{v}^{(0)}$$ are the corresponding vectors (column matrices) for the hidden and the visible layers with the superscript as the iteration ($\textbf{v}^{(0)}$ means the input that we provide to the network) and $\textbf{a}$ is the hidden layer bias vector.
+where $$\textbf{h}^{(1)}$$ and $$\textbf{v}^{(0)}$$ are the corresponding vectors (column matrices) for the hidden and the visible layers with the superscript as the iteration ($$\textbf{v}^{(0)}$$ means the input that we provide to the network) and $$\textbf{a}$$is the hidden layer bias vector.
 
 (Note that we are dealing with vectors and matrices here and not one-dimensional values.)
 
@@ -61,26 +61,27 @@ Now this image show the reverse phase or the **reconstruction** phase. It is sim
 
 $$\textbf{v}^{(1)} = S(\textbf{h}^{(1)}W^T + \textbf{a})$$
 
-where $\textbf{v}^{(1)}$ and $\textbf{h}^{(1)}$ are the corresponding vectors (column matrices) for the visible and the hidden layers with the superscript as the iteration and $\textbf{b}$ is the visible layer bias vector.
+where $$\textbf{v}^{(1)}$$ and $$\textbf{h}^{(1)}$$ are the corresponding vectors (column matrices) for the visible and the hidden layers with the superscript as the iteration and $$\textbf{b}$$ is the visible layer bias vector.
 
 
 #### The learning process
 
-Now, the difference $\textbf{v}^{(0)} - \textbf{v}^{(1)}$ can be considered as the reconstruction error that we need to reduce in subsequent steps of the training process. So the weights are adjusted in each iteration so as to minimize this error and this is what the learning process essentially is.
-Now, let us try to understand this process in mathematical terms without going too deep into the mathematics. In the forward pass, we are calculating the probability of output $\textbf{h}^{(1)}$ given the input  $\textbf{v}^{(0)}$ and the weights $W$ denoted by:
+Now, the difference $$\textbf{v}^{(0)} - \textbf{v}^{(1)}$$ can be considered as the reconstruction error that we need to reduce in subsequent steps of the training process. So the weights are adjusted in each iteration so as to minimize this error and this is what the learning process essentially is.
+Now, let us try to understand this process in mathematical terms without going too deep into the mathematics. In the forward pass, we are calculating the probability of output $$\textbf{h}^{(1)}$$ given the input  $$\textbf{v}^{(0)}$$ and the weights $$W$$ denoted by:
 
 $$ p(\textbf{h}^{(1)} \mid \textbf{v}^{(0)};W)$$
 
-and in the backward pass while reconstructing the input, we are calculating the probability of output $\textbf{v}^{(1)}$ given the input $\textbf{h}^{(1)}$ and the weights $W$ denoted by:
+and in the backward pass while reconstructing the input, we are calculating the probability of output $$\textbf{v}^{(1)}$$ given the input $$\textbf{h}^{(1)}$$ and the weights $$W$$ denoted by:
 
 $$p(\textbf{v}^{(1)} \mid \textbf{h}^{(1)};W)$$
 
 The weights used in both the forward and the backward pass are the same. Together, these two conditional probabilities lead us to the joint distribution of inputs and the activations:
+
 $$p(\textbf{v}, \textbf{h})$$
 
 Reconstruction is different from regression or classification in that it estimates the probability distribution of the original input instead of associating a continuous/discrete value to an input example. This means it is trying to guess multiple values at the same time. This is known as generative learning as opposed to discriminative learning that happens in a classification problem (mapping input to labels).
 
-Let us try to see how the algorithm reduces loss or simply put, how it reduces the error at each step. Assume that we have two normal distributions, one from the input data (denoted by $p(x)$) and one from the reconstructed input approximation (denoted by $q(x)$). The difference between these two distributions is our error in the graphical sense and our goal is to minimize it, i.e., bring the graphs as close as possible. This idea is represented by a term called the [Kullback–Leibler divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence). KL-divergence measures the non-overlapping areas under the two graphs and the RBM's optimization algorithm tries to minimize this difference by changing the weights so that the reconstruction closely resembles the input. The graphs on the right hand side show the integration of the difference in the areas of the curves on the left.
+Let us try to see how the algorithm reduces loss or simply put, how it reduces the error at each step. Assume that we have two normal distributions, one from the input data (denoted by $$p(x)$$) and one from the reconstructed input approximation (denoted by $$q(x)$$). The difference between these two distributions is our error in the graphical sense and our goal is to minimize it, i.e., bring the graphs as close as possible. This idea is represented by a term called the [Kullback–Leibler divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence). KL-divergence measures the non-overlapping areas under the two graphs and the RBM's optimization algorithm tries to minimize this difference by changing the weights so that the reconstruction closely resembles the input. The graphs on the right hand side show the integration of the difference in the areas of the curves on the left.
 
 <img src = "https://upload.wikimedia.org/wikipedia/en/a/a8/KL-Gauss-Example.png">
 
@@ -88,16 +89,18 @@ This gives us an intuition about our error term. Now, to see how actually this i
 
 #### Contrastive Divergence
 
-Boltzmann Machines (and RBMs) are Energy based models and a joint configuration, $(\textbf{v}, \textbf{h})$ of the visible and hidden units has an energy given by:
+Boltzmann Machines (and RBMs) are Energy based models and a joint configuration, $$(\textbf{v}, \textbf{h})$$ of the visible and hidden units has an energy given by:
+
 $$ \displaystyle E(\textbf{v}, \textbf{h}) = − \sum_{i∈visible}
 a_i v_i − \sum_{j∈hidden} b_jh_j − \sum_{i,j} v_ih_jw_{ij}$$
-where $v_i$, $h_j$ are the binary states of visible unit $i$ and hidden unit $j$, $a_i$, $b_j$ are their biases and $w_{ij}$ is the weight between them.
 
-The probability that the network assigns to a visible vector, $v$, is given by summing over all possible hidden vectors:
+where $$v_i$$, $$h_j$$ are the binary states of visible unit $$i$$ and hidden unit $$j$$, $$a_i$$, $$b_j$$ are their biases and $$w_{ij}$$ is the weight between them.
+
+The probability that the network assigns to a visible vector, $$v$$, is given by summing over all possible hidden vectors:
 
 $$\displaystyle p(\textbf{v}) = \frac{1}{Z} \sum_{\textbf{h}} e^{-E(\textbf{v},\textbf{h})}$$
 
-$Z$ here is the partition function and is given by summing over all possible pairs of visible and hidden vectors:
+$$Z$$ here is the partition function and is given by summing over all possible pairs of visible and hidden vectors:
 
 $$\displaystyle Z = \sum_{\textbf{v}, \textbf{h}} e^{-E(\textbf{v},\textbf{h})}$$
 
@@ -113,7 +116,7 @@ where the angle brackets are used to denote expectations under the distribution 
 
 $$\Delta w_{ij} = \alpha(\langle v_i h_j \rangle_{data} - \langle v_i h_j \rangle_{model})$$
 
-where $\alpha$ is a learning rate. For more information on what the above equations mean or how they are derived, refer to the [Guide on training RBM by Geoffrey Hinton](https://www.csrc.ac.cn/upload/file/20170703/1499052743888438.pdf). The important thing to note here is that because there are no direct connections between hidden units in an RBM, it is very easy to get an unbiased sample of $\langle v_i h_j \rangle_{data}$. Getting an unbiased sample of $\langle v_i h_j \rangle_{model}$, however, is much more difficult. This is because it would require us to run a Markov chain until the stationary distribution is reached (which means the energy of the distribution is minimized - **equilibrium!**) to approximate the second term. So instead of doing that, we perform [Gibbs Sampling](https://en.wikipedia.org/wiki/Gibbs_sampling) from the distribution. It is a Markov chain Monte Carlo (MCMC) algorithm for obtaining a sequence of observations which are approximated from a specified multivariate probability distribution, when direct sampling is difficult (like in our case). The Gibbs chain is initialized with a training example $\textbf{v}^{(0)}$ of the training set and yields the sample $\textbf{v}^{(k)}$ after $k$ steps. Each step $t$ consists of sampling $\textbf{h}^{(t)}$ from $p(\textbf{h} \mid \textbf{v}^{(t)})$ and sampling $\textbf{v}^{(t+1)}$ from $p(\textbf{v} \mid \textbf{h}^{(t)})$ subsequently (the value $k = 1$ surprisingly works quite well). The learning rule now becomes:
+where $$\alpha$$ is a learning rate. For more information on what the above equations mean or how they are derived, refer to the [Guide on training RBM by Geoffrey Hinton](https://www.csrc.ac.cn/upload/file/20170703/1499052743888438.pdf). The important thing to note here is that because there are no direct connections between hidden units in an RBM, it is very easy to get an unbiased sample of $$\langle v_i h_j \rangle_{data}$$. Getting an unbiased sample of $$\langle v_i h_j \rangle_{model}$$, however, is much more difficult. This is because it would require us to run a Markov chain until the stationary distribution is reached (which means the energy of the distribution is minimized - **equilibrium!**) to approximate the second term. So instead of doing that, we perform [Gibbs Sampling](https://en.wikipedia.org/wiki/Gibbs_sampling) from the distribution. It is a Markov chain Monte Carlo (MCMC) algorithm for obtaining a sequence of observations which are approximated from a specified multivariate probability distribution, when direct sampling is difficult (like in our case). The Gibbs chain is initialized with a training example $$\textbf{v}^{(0)}$$ of the training set and yields the sample $$\textbf{v}^{(k)}$$ after $$k$$ steps. Each step $$t$$ consists of sampling $$\textbf{h}^{(t)}$$ from $$p(\textbf{h} \mid \textbf{v}^{(t)})$$ and sampling $$\textbf{v}^{(t+1)}$$ from $$p(\textbf{v} \mid \textbf{h}^{(t)})$$ subsequently (the value $$k = 1$$ surprisingly works quite well). The learning rule now becomes:
 
 $$\Delta w_{ij} = \alpha(\langle v_i h_j \rangle_{data} - \langle v_i h_j \rangle_{recon})$$
 
@@ -123,7 +126,7 @@ When we apply this, we get:
 
 $$ \textbf{CD}_{k}(W, \textbf{v}^{(0)}) = -\displaystyle \sum_{\textbf{h}} p(\textbf{h} \mid \textbf{v}_k)\frac{\partial  E(\textbf{v}_k, \textbf{h})}{\partial W} + \displaystyle \sum_{\textbf{h}} p(\textbf{h} \mid \textbf{v}_k)\frac{\partial  E(\textbf{v}_k, \textbf{h})}{\partial W}$$
 
-where the second term is obtained after each $k$ steps of Gibbs Sampling.
+where the second term is obtained after each $$k$$ steps of Gibbs Sampling.
 
 <center><img src = "https://cdn-images-1.medium.com/max/1600/1*cPYfytQ30HP-2rpe_NKqmg.png"> </center>
 
