@@ -102,6 +102,7 @@ $Z$ here is the partition function and is given by summing over all possible pai
 $$\displaystyle Z = \sum_{\textbf{v}, \textbf{h}} e^{-E(\textbf{v},\textbf{h})}$$
 
 This gives us:
+
 $$ p(\textbf{v}) = \frac{\displaystyle \sum_{\textbf{h}} e^{-E(\textbf{v},\textbf{h})}}{\displaystyle \sum_{\textbf{v}, \textbf{h}} e^{-E(\textbf{v},\textbf{h})}}$$
 
 The log-likelihood gradient or the derivative of the log probability of a training vector with respect to a weight is surprisingly simple:
