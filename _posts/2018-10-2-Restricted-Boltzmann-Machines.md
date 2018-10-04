@@ -50,7 +50,7 @@ So the equation that we get in this step would be,
 
 $$ \textbf{h}^{(1)} = S(\textbf{v}^{(0)T}W + \textbf{a})$$
 
-where $\textbf{h}^{(1)}$ and $\textbf{v}^{(0)}$ are the corresponding vectors (column matrices) for the hidden and the visible layers with the superscript as the iteration ($\textbf{v}^{(0)}$ means the input that we provide to the network) and $\textbf{a}$ is the hidden layer bias vector.
+where $$\textbf{h}^{(1)}$$ and $$\textbf{v}^{(0)}$$ are the corresponding vectors (column matrices) for the hidden and the visible layers with the superscript as the iteration ($\textbf{v}^{(0)}$ means the input that we provide to the network) and $\textbf{a}$ is the hidden layer bias vector.
 
 (Note that we are dealing with vectors and matrices here and not one-dimensional values.)
 
