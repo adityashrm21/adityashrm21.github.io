@@ -133,9 +133,8 @@ What we discussed in this post was a simple Restricted Boltzmann Machine archite
 #### Sources:
 * [Wikipedia - Restricted Boltzmann Machine](https://en.wikipedia.org/wiki/Restricted_Boltzmann_machine)
 * [Wikipedia - Boltzmann Machine](https://en.wikipedia.org/wiki/Boltzmann_machine)
-*  https://github.com/srp98/Movie-Recommender-using-RBM
 * [Guide on training RBM by Geoffrey Hinton](https://www.csrc.ac.cn/upload/file/20170703/1499052743888438.pdf)
-* https://skymind.ai/wiki/restricted-boltzmann-machine
-* https://www.cs.toronto.edu/~rsalakhu/papers/rbmcf.pdf
+* [Skymind - RBM](https://skymind.ai/wiki/restricted-boltzmann-machine)
+* [https://www.cs.toronto.edu/~rsalakhu/papers/rbmcf.pdf](https://www.cs.toronto.edu/~rsalakhu/papers/rbmcf.pdf)
 * [Artem Oppermann's Medium post on understanding and training RBMs]( https://towardsdatascience.com/deep-learning-meets-physics-restricted-boltzmann-machines-part-ii-4b159dce1ffb)
 * [Medium post on Boltzmann Machines by Sunindu Data](https://medium.com/@neuralnets/boltzmann-machines-transformation-of-unsupervised-deep-learning-part-1-42659a74f530)
