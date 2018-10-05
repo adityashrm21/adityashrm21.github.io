@@ -132,7 +132,7 @@ where the second term is obtained after each $$k$$ steps of Gibbs Sampling. Here
 
 ### Conclusion
 
-What we discussed in this post was a simple Restricted Boltzmann Machine architecture. There are many variations and improvements on it and the algorithms used for the training and optimizing RBMs (that I will hopefully cover in the future posts). I hope this helped you understand and get an idea about this awesome generative algorithm. In the next post, we will apply RBMs to build a recommendation system for books!
+What we discussed in this post was a simple Restricted Boltzmann Machine architecture. There are many variations and improvements on RBMs and the algorithms used for their training and optimization (that I will hopefully cover in the future posts). I hope this helped you understand and get an idea about this awesome generative algorithm. In the next post, we will apply RBMs to build a recommendation system for books!
 
 #### Sources:
 * [Wikipedia - Restricted Boltzmann Machine](https://en.wikipedia.org/wiki/Restricted_Boltzmann_machine)
