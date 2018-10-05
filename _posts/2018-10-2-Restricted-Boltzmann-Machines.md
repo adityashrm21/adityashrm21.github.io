@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Understanding Restricted Boltzmann Machines
+title: Demystifying Restricted Boltzmann Machines
 ---
 
 In this post, I will try to shed some light on the intuition about Restricted Boltzmann Machines and the way they work. This is supposed to be a simple explanation without going too deep into mathematics and will be followed by a post on an application of RBMs. So let's start with the origin of RBMs and delve deeper as we move forward.
