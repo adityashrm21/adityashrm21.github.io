@@ -9,7 +9,7 @@ In this post, I will try to shed some light on the intuition about Restricted Bo
 
 Boltzmann machines are stochastic and generative neural networks capable of learning internal representations, and are able to represent and (given sufficient time) solve difficult combinatoric problems.
 
-They are named after the [Boltzmann distribution](https://en.wikipedia.org/wiki/Boltzmann_distribution) (also known as Gibbs Distribution) which is an integral part of Statistical Mechanics and helps us to understand impact of parameters like Entropy and Temperature on Quantum States in Thermodynamics. That's why they are called as Energy Based Models (EBM). They were invented in 1985 by Geoffrey Hinton, then a Professor at Carnegie Mellon University, and Terry Sejnowski, then a Professor at Johns Hopkins University
+They are named after the [Boltzmann distribution](https://en.wikipedia.org/wiki/Boltzmann_distribution) (also known as Gibbs Distribution) which is an integral part of Statistical Mechanics and helps us to understand the impact of parameters like Entropy and Temperature on the Quantum States in Thermodynamics. That's why they are called Energy-Based Models (EBM). They were invented in 1985 by Geoffrey Hinton, then a Professor at Carnegie Mellon University, and Terry Sejnowski, then a Professor at Johns Hopkins University
 
 ### How do Boltzmann Machines work?
 
@@ -18,15 +18,15 @@ A Boltzmann Machine looks like this:
 <center> <img src = "https://upload.wikimedia.org/wikipedia/commons/7/7a/Boltzmannexamplev1.png" width = "300"> </center>
 
 
-Boltzmann machines are non-deterministic (or stochastic) generative Deep Learning models with only two types of nodes - `hidden` and `visible` nodes. There are no output nodes! This may seem strange but this is what gives them this non-deterministic feature. They don't have the typical 1 or 0 type output through which patterns are learnt and optimized using Stochastic Gradient Descent. They learn patterns without that capability and this is what makes them so special!
+Boltzmann machines are non-deterministic (or stochastic) generative Deep Learning models with only two types of nodes - `hidden` and `visible` nodes. There are no output nodes! This may seem strange but this is what gives them this non-deterministic feature. They don't have the typical 1 or 0 type output through which patterns are learned and optimized using Stochastic Gradient Descent. They learn patterns without that capability and this is what makes them so special!
 
-One difference to note here is that unlike the other traditional networks (A/C/R) which don't have any connections between the input nodes, a Boltzmann Machine has connections among the input nodes. We can see from the image that all the nodes are connected to all other nodes irrespective of whether they are input or hidden nodes. This allows them to share information among themselves and self-generate subsequent data. We only measure what's on the visible nodes and not what's on the hidden nodes. When the input is provided, they are able to capture all the parameters, patterns and correlations among the data. This is why they are called `Deep generative models` and fall into the class of `Unsupervised Deep Learning`.
+One difference to note here is that unlike the other traditional networks (A/C/R) which don't have any connections between the input nodes, a Boltzmann Machine has connections among the input nodes. We can see from the image that all the nodes are connected to all other nodes irrespective of whether they are input or hidden nodes. This allows them to share information among themselves and self-generate subsequent data. We only measure what's on the visible nodes and not what's on the hidden nodes. When the input is provided, they are able to capture all the parameters, patterns and correlations among the data. This is why they are called `Deep Generative Models` and fall into the class of `Unsupervised Deep Learning`.
 
 ## What are Restricted Boltzmann Machines?
 
-RBMs are two-layered artificial neural network with generative capabilities. They have the ability to learn a probability distribution over its set of input. RBMs were invented by Geoffrey Hinton and can be used for dimensionality reduction, classification, regression, collaborative filtering, feature learning and topic modeling.
+RBMs are a two-layered artificial neural network with generative capabilities. They have the ability to learn a probability distribution over its set of input. RBMs were invented by Geoffrey Hinton and can be used for dimensionality reduction, classification, regression, collaborative filtering, feature learning, and topic modeling.
 
-RBMs are a special class of [Boltzmann Machines](https://en.wikipedia.org/wiki/Boltzmann_machine) and they are restricted in terms of the connections between the visible and the hidden units. This makes it easy to implement them when compared to Boltzmann Machines. As stated earlier, they are a two-layered neural network (one being the visible layer and the other one being the hidden layer) and these two layers are connected by a fully bipartite graph. This means that every node in the visible layer is connected to every node in the hidden layer but no two nodes in the same group are connected to each other. This restriction allows for more efficient training algorithms than are available for the general class of Boltzmann machines, in particular the [gradient-based](https://en.wikipedia.org/wiki/Gradient_descent) contrastive divergence algorithm.
+RBMs are a special class of [Boltzmann Machines](https://en.wikipedia.org/wiki/Boltzmann_machine) and they are restricted in terms of the connections between the visible and the hidden units. This makes it easy to implement them when compared to Boltzmann Machines. As stated earlier, they are a two-layered neural network (one being the visible layer and the other one being the hidden layer) and these two layers are connected by a fully bipartite graph. This means that every node in the visible layer is connected to every node in the hidden layer but no two nodes in the same group are connected to each other. This restriction allows for more efficient training algorithms than what is available for the general class of Boltzmann machines, in particular, the [gradient-based](https://en.wikipedia.org/wiki/Gradient_descent) contrastive divergence algorithm.
 
 A Restricted Boltzmann Machine looks like this:
 <center> <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Restricted_Boltzmann_machine.svg/440px-Restricted_Boltzmann_machine.svg.png" width = "300"> </center>
@@ -34,7 +34,7 @@ A Restricted Boltzmann Machine looks like this:
 ### How do Restricted Boltzmann Machines work?
 
 
-In an RBM, we have a symmetric bipartite graph where no two units within a same group are connected. Multiple RBMs can also be `stacked` and can be fine-tuned through the process of gradient descent and back-propagation. Such a network is called as a Deep Belief Network. Although RBMs are occasionally used, most people in the deep-learning community have started replacing their use with General Adversarial Networks or Variational Autoencoders.
+In an RBM, we have a symmetric bipartite graph where no two units within the same group are connected. Multiple RBMs can also be `stacked` and can be fine-tuned through the process of gradient descent and back-propagation. Such a network is called a Deep Belief Network. Although RBMs are occasionally used, most people in the deep-learning community have started replacing their use with General Adversarial Networks or Variational Autoencoders.
 
 RBM is a Stochastic Neural Network which means that each neuron will have some random behavior when activated. There are two other layers of bias units (hidden bias and visible bias) in an RBM. This is what makes RBMs different from autoencoders. The hidden bias RBM produce the activation on the forward pass and the visible bias helps RBM to reconstruct the input during a backward pass. The reconstructed input is always different from the actual input as there are no connections among the visible units and therefore, no way of transferring information among themselves.
 
@@ -50,14 +50,14 @@ So the equation that we get in this step would be,
 
 $$ \textbf{h}^{(1)} = S(\textbf{v}^{(0)T}W + \textbf{a})$$
 
-where $$\textbf{h}^{(1)}$$ and $$\textbf{v}^{(0)}$$ are the corresponding vectors (column matrices) for the hidden and the visible layers with the superscript as the iteration ($$\textbf{v}^{(0)}$$ means the input that we provide to the network) and $$\textbf{a}$$is the hidden layer bias vector.
+where $$\textbf{h}^{(1)}$$ and $$\textbf{v}^{(0)}$$ are the corresponding vectors (column matrices) for the hidden and the visible layers with the superscript as the iteration ($$\textbf{v}^{(0)}$$ means the input that we provide to the network) and $$\textbf{a}$$ is the hidden layer bias vector.
 
 (Note that we are dealing with vectors and matrices here and not one-dimensional values.)
 
 
 <center> <img src = "https://skymind.ai/images/wiki/reconstruction_RBM.png" width = "500"> </center>
 
-Now this image show the reverse phase or the **reconstruction** phase. It is similar to the first pass but in the opposite direction. The equation comes out to be:
+Now this image shows the reverse phase or the **reconstruction** phase. It is similar to the first pass but in the opposite direction. The equation comes out to be:
 
 $$\textbf{v}^{(1)} = S(\textbf{h}^{(1)}W^T + \textbf{a})$$
 
@@ -71,7 +71,7 @@ Now, let us try to understand this process in mathematical terms without going t
 
 $$ p(\textbf{h}^{(1)} \mid \textbf{v}^{(0)};W)$$
 
-and in the backward pass while reconstructing the input, we are calculating the probability of output $$\textbf{v}^{(1)}$$ given the input $$\textbf{h}^{(1)}$$ and the weights $$W$$ denoted by:
+and in the backward pass, while reconstructing the input, we are calculating the probability of output $$\textbf{v}^{(1)}$$ given the input $$\textbf{h}^{(1)}$$ and the weights $$W$$ denoted by:
 
 $$p(\textbf{v}^{(1)} \mid \textbf{h}^{(1)};W)$$
 
@@ -81,7 +81,7 @@ $$p(\textbf{v}, \textbf{h})$$
 
 Reconstruction is different from regression or classification in that it estimates the probability distribution of the original input instead of associating a continuous/discrete value to an input example. This means it is trying to guess multiple values at the same time. This is known as generative learning as opposed to discriminative learning that happens in a classification problem (mapping input to labels).
 
-Let us try to see how the algorithm reduces loss or simply put, how it reduces the error at each step. Assume that we have two normal distributions, one from the input data (denoted by $$p(x)$$) and one from the reconstructed input approximation (denoted by $$q(x)$$). The difference between these two distributions is our error in the graphical sense and our goal is to minimize it, i.e., bring the graphs as close as possible. This idea is represented by a term called the [Kullback–Leibler divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence). KL-divergence measures the non-overlapping areas under the two graphs and the RBM's optimization algorithm tries to minimize this difference by changing the weights so that the reconstruction closely resembles the input. The graphs on the right hand side show the integration of the difference in the areas of the curves on the left.
+Let us try to see how the algorithm reduces loss or simply put, how it reduces the error at each step. Assume that we have two normal distributions, one from the input data (denoted by $$p(x)$$) and one from the reconstructed input approximation (denoted by $$q(x)$$). The difference between these two distributions is our error in the graphical sense and our goal is to minimize it, i.e., bring the graphs as close as possible. This idea is represented by a term called the [Kullback–Leibler divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence). KL-divergence measures the non-overlapping areas under the two graphs and the RBM's optimization algorithm tries to minimize this difference by changing the weights so that the reconstruction closely resembles the input. The graphs on the right-hand side show the integration of the difference in the areas of the curves on the left.
 
 <img src = "https://upload.wikimedia.org/wikipedia/en/a/a8/KL-Gauss-Example.png">
 
@@ -89,7 +89,7 @@ This gives us an intuition about our error term. Now, to see how actually this i
 
 #### Contrastive Divergence
 
-Boltzmann Machines (and RBMs) are Energy based models and a joint configuration, $$(\textbf{v}, \textbf{h})$$ of the visible and hidden units has an energy given by:
+Boltzmann Machines (and RBMs) are Energy-based models and a joint configuration, $$(\textbf{v}, \textbf{h})$$ of the visible and hidden units has an energy given by:
 
 $$ \displaystyle E(\textbf{v}, \textbf{h}) = − \sum_{i∈visible}
 a_i v_i − \sum_{j∈hidden} b_jh_j − \sum_{i,j} v_ih_jw_{ij}$$
