@@ -13,7 +13,7 @@ An artificial neuron is a mathematical function conceived as a model of biologic
 
 In a simpler form, the flow in an ANN looks like this:
 
-![simple](imgs/nn/simple_nn.png)
+<center><img src = "imgs/nn/simple_nn.PNG"></center>
 
 But this doesn't look like a network, right? This flow diagram was just for understanding the flow. We will look at better network representations later.
 
