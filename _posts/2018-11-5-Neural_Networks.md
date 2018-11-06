@@ -130,4 +130,3 @@ I hope this post was helpful in explaining neural networks in simple terms along
 #### Resources:
 1. [Notes on Sparse Autoencoder by Andrew Ng](http://web.stanford.edu/class/cs294a/sparseAutoencoder_2011new.pdf)
 2. Wikipedia
-3.
