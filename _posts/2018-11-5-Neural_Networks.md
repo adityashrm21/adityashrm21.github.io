@@ -13,7 +13,7 @@ An artificial neuron is a mathematical function conceived as a model of biologic
 
 In a simpler form, the flow in an ANN looks like this:
 
-<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/simple_nn.png"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/simple_nn.png?raw=true"></center>
 
 But this doesn't look like a network, right? This flow diagram was just for understanding the flow. We will look at better network representations later.
 
@@ -29,7 +29,7 @@ Neural networks have the ability to learn non-linear relationships from the data
 
 Let's learn about neural networks by understanding them through a simple network with a single neuron as shown below. The network in the figure has a single neuron with $$n$$ inputs $$(a_1, a_2...,a_n)$$, $$n$$ weights $$(w_1, w_2...,w_n)$$ and one output (a complex term which we will break down and simplify).
 
-<center> <img src = "imgs/nn/nn.gif"> </center>
+<center> <img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/nn.gif?raw=true"> </center>
 
 As explained earlier in the flow diagram for an ANN, the weights are multiplied by the inputs and a bias term is added to the sum. This quantity is then passed through an activation function such as a Sigmoid function, a Rectified Linear Unit or a $$tanh$$ function (also known as the hyperbolic tangent). This gives us the output of the network which is also called the activation of the output unit. In general, each node $$i$$ in each layer $$l$$ in the neural network will have an activation from the previous layer (will be more clear later).
 
@@ -41,7 +41,7 @@ $$ f(x) = \frac{1}{1 + e^{-x}}$$
 
 This is the same function which is used in logistic regression (if you remember that) and thus, our single neuron corresponds exactly to an input-output mapping defined by logistic regression. The output of this function lies in the range [0, 1].
 
-<center><img src = "imgs/nn/sigmoid.png" width = 350></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/sigmoid.png?raw=true" width = 350></center>
 
 #### Hyperbolic Tangent Function
 
@@ -51,7 +51,7 @@ $$ f(x) = tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$$
 
 The range for this function is [-1, 1] and we should keep the range of our activation function in mind when using them.
 
-<center><img src = "imgs/nn/tangent.png" width = 350></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/tangent.png?raw=true" width = 350></center>
 
 #### Rectified Linear Unit
 
@@ -61,13 +61,13 @@ $$ f(x)=x^{+}=\max(0,x)$$
 
 where $$x$$ is the input to a neuron. This activation function has been shown to enable better training of deep networks as opposed to its earlier counterparts which we discussed above. A unit employing the rectifier is also called a rectified linear unit (ReLU).
 
-<center><img src = "imgs/nn/relu.png" width = 350></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/relu.png?raw=true" width = 350></center>
 
 ### Neural Network Formulation
 
 Let us now talk about the math and how information if propagated through a neural network. For this task, we will consider the network shown below with 3 layers.
 
-<center><img src = "imgs/nn/nn_form.png" width = 450></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/nn_form.png?raw=true" width = 450></center>
 
 The leftmost layer (layer $$L_1$$) is called the input layer. The $$+1$$ term in the input layer corresponds to the bias or the intercept term. The middle layer (layer $$L_2$$) is called the hidden layer. This is because it is hidden and its values are not observed in the training dataset. The third layer (layer $$L_3$$) is the output layer and it has only one node (note that the output layer can have multiple nodes). We also say that our network has $$3$$ input units, $$3$$ hidden units and $$1$$ output unit (the bias terms are not counted in this).
 
