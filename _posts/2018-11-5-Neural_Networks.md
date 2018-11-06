@@ -3,13 +3,13 @@ layout: post
 title: Neural Networks - Explained, Demystified and Simplified
 ---
 
-Everyone who wants to learn neural networks is new to them at some point in their lives. It seems really intuitive to understand that neural networks behave just like human brain with all the convoluted connections and neurons and whatnot! But when it comes to actually understanding the math behind certain concepts, our brain fails to create new connections to understand the equations easily unless you have a hefty math background. See the irony? (Just kidding!).
+Everyone who wants to learn neural networks is new to them at some point in their lives. It seems really intuitive to understand that neural networks behave just like an animal brain with all the convoluted connections and neurons and whatnot! But when it comes to actually understanding the math behind certain concepts, our brain fails to create new connections to understand the equations easily unless you have a hefty math background. See the irony? (Just kidding!).
 
 Let's try to break it down into pieces and understand it step by step.
 
 ## What is an Artificial Neuron?
 
-An artificial neuron is a mathematical function conceived as a model of biological neurons, a neural network. Artificial neurons are elementary units in an Artificial Neural Network (ANN). The artificial neuron receives one or more inputs and sums them to produce an output (or activation). Usually each input is separately weighted, and the sum is passed through a non-linear function known as an activation function (more on this coming later) or transfer function.
+An artificial neuron is a mathematical function conceived as a model of biological neurons, a neural network. Artificial neurons are elementary units in an Artificial Neural Network (ANN). The artificial neuron receives one or more inputs and sums them to produce an output (or activation). Usually, each input is separately weighted, and the sum is passed through a non-linear function known as an activation function (more on this coming later) or transfer function.
 
 In a simpler form, the flow in an ANN looks like this:
 
@@ -19,9 +19,9 @@ But this doesn't look like a network, right? This diagram is just for understand
 
 ## What is a Neural Network?
 
-Neural networks are the computing systems vaguely inspired by biological neurons, have connections similar to the connections in animal brain and are made up of multiple artificial neurons arranged in layers.
+Neural networks are the computing systems vaguely inspired by biological neurons, have connections similar to the connections in the animal brain and are made up of multiple artificial neurons arranged in layers.
 
-In case of supervised learning, we need to provide labeled examples to our neural network $$(x^{(i)}, y^{(i)})$$ as the training data. If you are not familiar with supervised learning, I would suggest you look it up but simply put, $$y^{(i)}$$ is the output of the observation when the input provided to the supervised learning algorithm is $$x^{(i)}$$ and these input-output pairs are provided to the algorithm in order for it to learn the pattern and form a relation between the input and the output variables. This helps the algorithm to predict the output on new unseen values of the input.
+In case of supervised learning, we need to provide labeled examples to our neural network $$(x^{(i)}, y^{(i)})$$ as the training data. If you are not familiar with supervised learning, I would suggest you look it up but simply put, $$y^{(i)}$$ is the output of the observation when the input provided to the supervised learning algorithm is $$x^{(i)}$$ and these input-output pairs are provided to the algorithm in order for it to learn the pattern and form a relationship between the input and the output variables. This helps the algorithm to predict the output on new unseen values of the input.
 
 Neural networks have the ability to learn non-linear relationships from the data due to their special architecture and this is not possible in many of the traditional machine learning algorithms like regression. They are able to do so by fitting a combination of the parameters $$W$$ and $$b$$ (the weights and bias) to our data to produce the output. Don't worry about what weights and bias are for now as we will be looking at each one of them in detail.
 
@@ -64,14 +64,14 @@ where $$x$$ is the input to a neuron. This activation function has been shown to
 <center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/relu.png?raw=true" width = "400"></center>
 
 Here are some advantages of ReLU as an activation function over the traditional Sigmoid function:
--  The ReLU has a constant gradient which results in faster learning. Sigmoids, on the other hand, have diminishing gradient. The constant gradient in a ReLU results in a reduced likelihood of vanishing gradient.
+-  The ReLU has a constant gradient which results in faster learning. Sigmoids, on the other hand, have a diminishing gradient. The constant gradient in a ReLU results in a reduced likelihood of vanishing gradient.
 - Another benefit of ReLU over sigmoids is sparsity which arises when the input to the activation function is non-positive. The more such units exist, the more sparse the representation. Sigmoids, on the other hand, always generate some non-zero value which results in dense representations which are less beneficial than sparse representations.
 
 Dense and Sparse are not some fancy words. In our context, a sparse representation simply means that the representation of the matrices or vectors involved in the calculations have more $$0$$s while the dense ones don't (and have a lot of small values instead). They may also be described in terms of activations of particular layers or in terms of a small subset of connections in the network as opposed to all possible connections. Sparse representations are easy to store and deal with than the dense ones.
 
 ### Neural Network Formulation
 
-Let us now talk about the math and how information if propagated through a neural network. For this task, we will consider the network shown below with 3 layers.
+Let us now talk about the math and how information is propagated through a neural network. For this task, we will consider the network shown below with 3 layers.
 
 <center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/nn_form.png?raw=true" width = "500"></center>
 
@@ -85,7 +85,7 @@ The parameters weights and bias are denoted by $$W, b$$ and in our case we have 
 
 _It is easy to confuse the order of $$i$$ and $$j$$ in the weight matrix with the corresponding layers in the network and to confuse the bias for a unit in layer $$l$$ with the bias for layer $$l+1$$._
 
-In simple terms, a weight is a number which tells us the the contribution of a particular unit when being used in the calculation of an input to another unit inside a neural network. If the weight for connection $$c1$$ from a unit $$x$$ to a unit $$y$$ is more than the weight for connection $$c2$$ from unit $$z$$ to unit $$y$$, it means that the contribution of unit $$x$$ is more in the input to $$y$$ when compared to the contribution of unit $$z$$ and $$x$$ will play a greater role in the activation of $$y$$ than $$z$$. This should give a basic idea of the role of weights in a network.
+In simple terms, a weight is a number which tells us the contribution of a particular unit when being used in the calculation of an input to another unit inside a neural network. If the weight for connection $$c1$$ from a unit $$x$$ to a unit $$y$$ is more than the weight for connection $$c2$$ from unit $$z$$ to unit $$y$$, it means that the contribution of unit $$x$$ is more in the input to $$y$$ when compared to the contribution of unit $$z$$ and $$x$$ will play a greater role in the activation of $$y$$ than $$z$$. This should give a basic idea of the role of weights in a network.
 
 We will denote the number of nodes in layer $$l$$ by $$s_l$$ (without counting the bias unit). In our example, we have $$W^{(1)} \in \mathbb{R}^{3\times3}, W^{(2)} \in \mathbb{R}^{1\times3}$$. Bias units don't have inputs going into them since they always output a value of $$+1$$ (they are like the constants in equations which play the role of an intercept, displacing the curve form the origin).
 
@@ -129,9 +129,9 @@ $$z^{(l+1)} = W^{(l)}a^{(l)} + b^{(l)}$$
 
 $$a^{(l+1)} = f(z^{(l+1)})$$
 
-This is the beauty of linear algebra and matrix computations in the field of deep learning as they help us take the advantage of fat linear algebra routines to quickly perform calculations in our network. This is also where the role of GPUs comes in. You can read more about how GPUs help in faster matrix calculations [here](https://graphics.stanford.edu/papers/gpumatrixmult/gpumatrixmult.pdf).
+This is the beauty of linear algebra and matrix computations in the field of deep learning as they help us take the advantage of fast linear algebra routines to quickly perform calculations in our network. This is also where the role of GPUs comes in. You can read more about how GPUs help in faster matrix calculations [here](https://graphics.stanford.edu/papers/gpumatrixmult/gpumatrixmult.pdf).
 
-This is a typical example of a feed-forward neural network but it is more easy to imagine a feedforward network with more than 1 hidden layers. The information will propagate in the forward direction as the activations of one layer feed into another till we reach the output. The word feedforward is used because there are no directed loops or cycles in the network (yes neural networks can have loops/cycles, more on them in later posts).
+This is a typical example of a feed-forward neural network but it is easier to imagine a feedforward network with more than 1 hidden layers. The information will propagate in the forward direction as the activations of one layer feed into another till we reach the output. The word feedforward is used because there are no directed loops or cycles in the network (yes neural networks can have loops/cycles, more on them in later posts).
 
 In case we have more than two units in the output layer (which as discussed earlier, is possible), we will have training examples of the form $$(x^{(i)}, y^{(i)})$$ where $$y^{(i)} \in \mathbb{R}^2$$. This sort of network is useful if there are multiple outputs that we are interested in predicting!
 
