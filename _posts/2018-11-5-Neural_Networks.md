@@ -51,7 +51,7 @@ $$ f(x) = tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$$
 
 The range for this function is [-1, 1] and we should keep the range of our activation function in mind when using them.
 
-<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/tangent.png?raw=true" width = 350></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/tangent.png?raw=true"></center>
 
 #### Rectified Linear Unit
 
