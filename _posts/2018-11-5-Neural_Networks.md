@@ -41,7 +41,7 @@ $$ f(x) = \frac{1}{1 + e^{-x}}$$
 
 This is the same function which is used in logistic regression (if you remember that) and thus, our single neuron corresponds exactly to an input-output mapping defined by logistic regression. The output of this function lies in the range [0, 1].
 
-<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/sigmoid.png?raw=true" width = 350></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/sigmoid.png?raw=true" width = "350"></center>
 
 #### Hyperbolic Tangent Function
 
@@ -124,4 +124,10 @@ This is a typical example of a feed-forward neural network but it is more easy t
 
 In case we have more than two units in the output layer (which as discussed earlier, is possible), we will have training examples of the form $$(x^{(i)}, y^{(i)})$$ where $$y^{(i)} \in \mathbb{R}^2$$. This sort of network is useful if there are multiple outputs that we are interested in predicting!
 
+## Conclusion
 I hope this post was helpful in explaining neural networks in simple terms along with the required mathematics! Neural networks are not difficult to understand. The fact that the math involves a lot of notations in matrix and vector forms makes it a little bit tricky to understand at one go. If you don't understand it on one go, read again and try to break down stuff with pen and paper and I am sure you will be comfortable with neural networks in no time!
+
+#### Resources:
+1. [Notes on Sparse Autoencoder by Andrew Ng](http://web.stanford.edu/class/cs294a/sparseAutoencoder_2011new.pdf)
+2. Wikipedia
+3.
