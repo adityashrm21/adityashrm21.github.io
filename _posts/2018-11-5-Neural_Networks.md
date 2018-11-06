@@ -41,7 +41,7 @@ $$ f(x) = \frac{1}{1 + e^{-x}}$$
 
 This is the same function which is used in logistic regression (if you remember that) and thus, our single neuron corresponds exactly to an input-output mapping defined by logistic regression. The output of this function lies in the range [0, 1].
 
-<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/sigmoid.png?raw=true" width = "350"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/sigmoid.png?raw=true" width = "400"></center>
 
 #### Hyperbolic Tangent Function
 
@@ -51,7 +51,7 @@ $$ f(x) = tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$$
 
 The range for this function is [-1, 1] and we should keep the range of our activation function in mind when using them.
 
-<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/tangent.png?raw=true"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/tangent.png?raw=true" width = "400"></center>
 
 #### Rectified Linear Unit
 
@@ -61,13 +61,13 @@ $$ f(x)=x^{+}=\max(0,x)$$
 
 where $$x$$ is the input to a neuron. This activation function has been shown to enable better training of deep networks as opposed to its earlier counterparts which we discussed above. A unit employing the rectifier is also called a rectified linear unit (ReLU).
 
-<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/relu.png?raw=true" width = 350></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/relu.png?raw=true" width = "400"></center>
 
 ### Neural Network Formulation
 
 Let us now talk about the math and how information if propagated through a neural network. For this task, we will consider the network shown below with 3 layers.
 
-<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/nn_form.png?raw=true" width = 450></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/nn_form.png?raw=true" width = "500"></center>
 
 The leftmost layer (layer $$L_1$$) is called the input layer. The $$+1$$ term in the input layer corresponds to the bias or the intercept term. The middle layer (layer $$L_2$$) is called the hidden layer. This is because it is hidden and its values are not observed in the training dataset. The third layer (layer $$L_3$$) is the output layer and it has only one node (note that the output layer can have multiple nodes). We also say that our network has $$3$$ input units, $$3$$ hidden units and $$1$$ output unit (the bias terms are not counted in this).
 
