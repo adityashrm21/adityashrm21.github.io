@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Demystifying Neural Networks
+title: Neural Networks - Explained, Demystified and Simplified
 ---
 
 Everyone who wants to learn neural networks is new to them at some point in their lives. It seems really intuitive to understand that neural networks behave just like human brain with all the convoluted connections and neurons and whatnot! But when it comes to actually understanding the math behind certain concepts, our brain fails to create new connections to understand the equations easily unless you have a hefty math background. See the irony? (Just kidding!).
