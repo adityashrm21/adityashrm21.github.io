@@ -7,7 +7,17 @@ Everyone who wants to learn neural networks is new to them at some point in thei
 
 Let's try to break it down into pieces and understand it step by step.
 
-## What is an Artificial Neuron?
+## What is a Neural Network?
+
+Neural networks are the computing systems vaguely inspired by biological neurons, have connections similar to the connections in the animal brain and are made up of multiple artificial neurons arranged in layers.
+
+Neural Networks are the building blocks of a class of algorithms known as Deep Learning. Deep Learning is essentially, a specific class of Machine Learning with special characteristics that allows it to function and make decisions in a way similar to how humans do it. Traditional machine learning algorithms perform really good and become progressively better at what their function is, but they require some guidance. If a prediction is not correct, it requires some human intervention to correct it and tell the algorithm that it was not correct. In deep learning on the other hand, the algorithm is able to learn these patterns on its own without being explicitly programmed to do so. They are able to do so because of their structure which is similar to the neural structure in our brains and this helps us learn in a way similar to how humans (or animals in general) learn anything and that is, through repetition. This is why deep learning algorithms require a lot of data to train on before they can make really good predictions.
+
+Supervised learning algorithms are a class of algorithms in which need labeled examples to be provided to them in order for them to learn. More specifically, we need to provide labeled examples to our neural network $$(x^{(i)}, y^{(i)})$$ as the training data. Simply put, $$y^{(i)}$$ is the output of the observation when the input provided to the supervised learning algorithm is $$x^{(i)}$$ and these input-output pairs are provided to the algorithm in order for it to learn the pattern and form a relationship between the input and the output variables. This helps the algorithm to predict the output on new unseen values of the input.
+
+Neural networks have the ability to learn non-linear relationships from the data due to their special architecture and this is not possible in many of the traditional machine learning algorithms like regression. They are able to do so by fitting a combination of the parameters $$W$$ and $$b$$ (the weights and bias) to our data to produce the output. Don't worry about what weights and bias are for now as we will be looking at them in detail in the coming sections. Let us look at the building blocks of a neural network (artificial neurons) and what they mean in computational terms.
+
+### What is an Artificial Neuron?
 
 An artificial neuron is a mathematical function conceived as a model of biological neurons, a neural network. Artificial neurons are elementary units in an Artificial Neural Network (ANN). The artificial neuron receives one or more inputs and sums them to produce an output (or activation). Usually, each input is separately weighted, and the sum is passed through a non-linear function known as an activation function (more on this coming later) or transfer function.
 
@@ -16,14 +26,6 @@ In a simpler form, the flow in an ANN looks like this:
 <center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/nn/simple_nn.png?raw=true"></center>
 
 But this doesn't look like a network, right? This diagram is just for understanding the flow of information in a neural network. We will look at better network representations later.
-
-## What is a Neural Network?
-
-Neural networks are the computing systems vaguely inspired by biological neurons, have connections similar to the connections in the animal brain and are made up of multiple artificial neurons arranged in layers.
-
-In case of supervised learning, we need to provide labeled examples to our neural network $$(x^{(i)}, y^{(i)})$$ as the training data. If you are not familiar with supervised learning, I would suggest you look it up but simply put, $$y^{(i)}$$ is the output of the observation when the input provided to the supervised learning algorithm is $$x^{(i)}$$ and these input-output pairs are provided to the algorithm in order for it to learn the pattern and form a relationship between the input and the output variables. This helps the algorithm to predict the output on new unseen values of the input.
-
-Neural networks have the ability to learn non-linear relationships from the data due to their special architecture and this is not possible in many of the traditional machine learning algorithms like regression. They are able to do so by fitting a combination of the parameters $$W$$ and $$b$$ (the weights and bias) to our data to produce the output. Don't worry about what weights and bias are for now as we will be looking at each one of them in detail.
 
 ### Architecture
 
