@@ -9,7 +9,7 @@ In this post, I will try to shed some light on the intuition about Restricted Bo
 
 Boltzmann machines are stochastic and generative neural networks capable of learning internal representations, and are able to represent and (given sufficient time) solve difficult combinatoric problems.
 
-They are named after the [Boltzmann distribution](https://en.wikipedia.org/wiki/Boltzmann_distribution) (also known as Gibbs Distribution) which is an integral part of Statistical Mechanics and helps us to understand the impact of parameters like Entropy and Temperature on the Quantum States in Thermodynamics. That's why they are called Energy-Based Models (EBM). They were invented in 1985 by Geoffrey Hinton, then a Professor at Carnegie Mellon University, and Terry Sejnowski, then a Professor at Johns Hopkins University
+They are named after the [Boltzmann distribution](https://en.wikipedia.org/wiki/Boltzmann_distribution) (also known as Gibbs Distribution) which is an integral part of Statistical Mechanics and helps us to understand the impact of parameters like Entropy and Temperature on the Quantum States in Thermodynamics. That's why they are called Energy-Based Models (EBM). They were invented in 1985 by Geoffrey Hinton, then a Professor at Carnegie Mellon University, and Terry Sejnowski, then a Professor at Johns Hopkins University.
 
 ### How do Boltzmann Machines work?
 
