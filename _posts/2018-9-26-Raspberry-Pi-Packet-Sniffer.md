@@ -210,7 +210,7 @@ Now we would tweak some settings and configurations and use **mitmproxy** to set
 4. To connect to the network use the same port in advance options setting of the wifi network and then connect<br><br>
 5. Now you would be able to see request data from the secured site as well using mitmproxy
 
-###### So this is how you can create a Raspberry Pi Sniffer. You can tweak the steps and do something really different on your own! If you liked the tutorial, star the repository!
+###### So this is how you can create a Raspberry Pi Sniffer. You can tweak the steps and do something really different on your own! If you liked the tutorial, please [star the repository](https://github.com/adityashrm21/RaspberryPi-Packet-Sniffer) so that this reaches out to more people!
 
 ##### Sources:
 1. [Raspberry Pi Official Documentation](https://www.raspberrypi.org/help/noobs-setup/)
