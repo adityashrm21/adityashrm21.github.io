@@ -8,6 +8,7 @@ permalink: /about/
 * Active interests in Deep Learning, AI, Data Science and Computer Networks
 * Actively looking for a role as a Deep Learning Researcher
 * Aims to help create the world a better place to live in
+* Believes in "learning-by-doing"
 
 I am deeply fascinated by research in AI and want to become a part of it and contribute as much as I can to improve the quality of human life and make the world more smart! My current pursuit of a degree in Data Science is helping me get one step closer to achieving my goal.
 
