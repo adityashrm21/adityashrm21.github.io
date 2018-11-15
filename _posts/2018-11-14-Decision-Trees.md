@@ -156,7 +156,13 @@ graphviz.Source(export_graphviz(model,
 
 ```
 
-After you run this code, you can see a decision tree gets created which clearly states all the rules of splitting at each node. I'd suggest looking the nodes and their contents. As you might have expected, the tree is a little big and complex and as they grow bigger, it becomes more difficult to directly comprehend them through human eyes. Let us visualize the second decision tree that we created (we can also export these trees to a pdf to zoom in on different parts and have a better look using the `graphviz` package).
+After you run this code, you can see a decision tree gets created which clearly states all the rules of splitting at each node. I'd suggest looking the nodes and their contents.
+
+<br>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/dt/dtree_big.png?raw=True"></center>
+<br>
+
+As you might have expected, the tree is a little big and complex and as they grow bigger, it becomes more difficult to directly comprehend them through human eyes. Let us visualize the second decision tree that we created (we can also export these trees to a pdf to zoom in on different parts and have a better look using the `graphviz` package).
 
 ```{python}
 # visualizing our decision tree with max_depth = 2
