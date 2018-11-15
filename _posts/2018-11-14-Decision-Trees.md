@@ -15,7 +15,9 @@ As mentioned earlier, a machine learning algorithm provides the machine/computer
 
 Let us look at a visualization of a decision tree to get us comfortable with the definition described above.
 
+<br>
 <center><img src = "https://cdn-images-1.medium.com/max/1200/0*Yclq0kqMAwCQcIV_.jpg" width = "400"></center>
+<br>
 
 As is evident from the visualization, we are simply making a series of if-else decisions at each node of the tree and this leads us to one or more possible answers for the question that we are trying to find an answer to.
 
@@ -40,7 +42,10 @@ Let us now see how a decision tree would handle this task. Let us recall and for
 
 Our decision tree would be made of several `decision stumps` which are the building blocks of a decision tree. Look at the image below to see what a decision stump would look like in our case:
 
+<br>
 <center><img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Decision_stump.svg/1200px-Decision_stump.svg.png" width = "500"></center>
+
+<br>
 
 Now our task is to find the best rule in terms of a threshold/label for each decision stump in our tree and we will do this by assigning a `score` to each possible decision stump that we look at and looking for the rule with the best score. What is one candidate for this score that immediately comes to our mind? Yes, you probably guessed it right. It's the `accuracy`! We can calculate this by counting the number of observations that the model correctly classified. To consider this in relation to our problem, let us consider the rule from the image above which uses Petal.Width > 1.75 to decide the species of an example. Say that we obtain an accuracy `a1` when we classify using this rule. Now, another similar rule might be Petal.Width > 2 and let's say that we obtain an accuracy `a2` using this rule. We simply select the first rule if a1 > a2 or select the second rule otherwise. There can be ties and they are usually broken randomly by the model. Similarly, we will have a lot of rules for all the other features and we need to use the best combination of such rules to obtain the maximum accuracy.
 
@@ -166,7 +171,9 @@ graphviz.Source(export_graphviz(model2,
                                 impurity=False))
 ```
 
+<br>
 <center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/dt/dtree.png?raw=True" width = "500"></center>
+<br>
 
 As we discussed, the max depth in this tree is limited to 2 and we see a combination of different categories in the leaf nodes which could have been further split into more nodes to learn the pattern even better (which is what happens in the first case).
 
