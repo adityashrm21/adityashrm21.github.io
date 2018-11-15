@@ -109,7 +109,7 @@ test_accuracy = accuracy_score(y_test, pred_test)
 print('Training accuracy is: {0}'.format(train_accuracy))
 print('Testing accuracy is: {0}'.format(test_accuracy))
 ```
-In the above code snippet, we are again importing a method to calculate our accuracy score in case of classification. We then use the predict method from tree in order to predict on our train and the test datasets. We then compare both the accuracies.
+> In the above code snippet, we are again importing a method to calculate our accuracy score in case of classification. We then use the predict method from tree in order to predict on our train and the test datasets. We then compare both the accuracies.
 
 And that's it! As I told you, you will be surprised by the amount of code that we would need to write a decision tree classifier using sklearn. I was definitely surprised when I first looked at this for the first time! These libraries make our lives much easier and we can actually concentrate on doing the machine learning instead of breaking our heads writing code to implement these algorithms from scratch, though it is definitely a good exercise in order to understand an algorithm from head to toe. I recommend doing that if you really want to learn the intricacies of a machine learning algorithm and the more you do that, the more you appreciate such libraries. Give it a try!
 
