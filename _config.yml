@@ -1,11 +1,8 @@
 #
 # This file contains configuration flags to customize your site
 #
----
-layout: default
 comments: true
 # other options
----
 
 author: adityashrm21
 # Name of your site (displayed in the header)
