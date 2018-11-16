@@ -1,11 +1,15 @@
 #
 # This file contains configuration flags to customize your site
 #
+---
+layout: default
+comments: true
+author: adityashrm21
+# other options
+---
 
 # Name of your site (displayed in the header)
 name: Aditya Sharma
-
-author: adityashrm21
 
 # Short bio or description (displayed in the header)
 description: Data Science | Artificial Intelligence | Machine Learning
