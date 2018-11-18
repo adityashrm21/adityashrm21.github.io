@@ -49,7 +49,7 @@ Our decision tree would be made of several `decision stumps` which are the build
 
 Now our task is to find the best rule in terms of a threshold/label for each decision stump in our tree and we will do this by assigning a `score` to each possible decision stump that we look at and looking for the rule with the best score. What is one candidate for this score that immediately comes to our mind? Yes, you probably guessed it right. It's the `accuracy`! We can calculate this by counting the number of observations that the model correctly classified. To consider this in relation to our problem, let us consider the rule from the image above which uses Petal.Width > 1.75 to decide the species of an example. Say that we obtain an accuracy `a1` when we classify using this rule. Now, another similar rule might be Petal.Width > 2 and let's say that we obtain an accuracy `a2` using this rule. We simply select the first rule if a1 > a2 or select the second rule otherwise. There can be ties and they are usually broken randomly by the model. Similarly, we will have a lot of rules for all the other features and we need to use the best combination of such rules to obtain the maximum accuracy.
 
-There is a whole can of worms in the process of how the model chooses it's set of rules but what we need to understand is that the model will find the best rule by performing a search through a lot of possible candidates for that rule and deciding on the candidate that gives us the best score. For instance, the model can make rules based on
+There is a whole can of worms in the process of how the model chooses its set of rules but what we need to understand is that the model will find the best rule by performing a search through a lot of possible candidates for that rule and deciding on the candidate that gives us the best score. For instance, the model can make rules based on
 - Petal.Width > 0.00
 - Petal.Width > 0.01
 - Petal.Width > 0.02
@@ -80,7 +80,7 @@ In this approach, we find the decision stump with the best rule and when the dat
 
 Now comes the most exciting part after having learned the theoretical stuff! We will implement a decision tree algorithm on the Iris dataset and make some predictions. We will then evaluate how our predictions performed using the accuracy obtained. Let's get started without waiting any further. I bet you will be surprised with the amount of code that we will write for the whole process from getting the data to prediction!
 
-```{python}
+```python
 # importing the iris dataset
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
@@ -94,7 +94,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 ```
 > The above code snippet will load the some required sklearn modules for us including the iris dataset itself. We then split the dataset into training and testing data with a 67-33% split using the train_test_split method from the model_selection module of sklearn library. Note that we need to shuffle the data before we split because we need our two datasets to be representative of the actual population (the shuffle argument takes care of this). Also, we use the random_state argument which will set a random seed for this split so that you get the exact same split as mine when you try to replicate this process on your machine.
 
-```{python}
+```python
 # building our decision tree classifier and fitting the model
 from sklearn import tree
 
@@ -103,7 +103,7 @@ model.fit(X_train, y_train)
 ```
 > In this code piece, we are importing the DecisionTreeClassifier class from sklearn which will be used to make our model. We then create an instance of that class which is used to fit the training data to the model.
 
-```{python}
+```python
 # predicting on the train and the test data and assessing the accuracies
 from sklearn.metrics import accuracy_score
 
@@ -121,7 +121,7 @@ And that's it! As I told you, you will be surprised by the amount of code that w
 ### Analysis
 When you run the last piece of code, you will see that we obtain an accuracy of 1.0 (100%) on both the training and the test data. This is because our data is relatively simple for the model to break down into patterns and it easily learns these patterns and classifies even the unseen data with a 100% accuracy. This is a good time to discuss the concept of depth in a decision tree. As we mentioned earlier, a decision tree can learn to perfectly fit the training data and it will require a large depth in order to achieve this. Depth is simply the maximum distance from the root to a leaf node in the tree. In order to see the effect of depth, let us try to train our model once again but with a maximum depth of 2 and see what happens.
 
-```{python}
+```python
 # calculating the accuracy again with max_depth = 2
 
 model2 = tree.DecisionTreeClassifier(max_depth = 2)
@@ -140,7 +140,7 @@ When you run this code, you will see a different result from what we obtained pr
 
 Let us look at the tree that we obtain after fitting our model to the data.
 
-```{python}
+```python
 # visualizing our decision tree
 # install graphviz using `pip install graphviz` or
 # 'conda install graphviz' or `brew install graphviz`
@@ -164,7 +164,7 @@ After you run this code, you can see a decision tree gets created which clearly 
 
 As you might have expected, the tree is a little big and complex and as they grow bigger, it becomes more difficult to directly comprehend them through human eyes. Let us visualize the second decision tree that we created (we can also export these trees to a pdf to zoom in on different parts and have a better look using the `graphviz` package).
 
-```{python}
+```python
 # visualizing our decision tree with max_depth = 2
 import graphviz
 from sklearn.tree import export_graphviz
