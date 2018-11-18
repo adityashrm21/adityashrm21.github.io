@@ -27,7 +27,7 @@ They do this by trying to produce the probability distribution of the input data
 
 Here is a representation of a simple Restricted Boltzmann Machine with one visible and one hidden layer:
 
-<center><img src = "imgs/book_reco/rbm.png" width = "300"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/book_reco/rbm.png?raw=True" width = "300"></center>
 <br>
 
 For a more comprehensive dive into RBMs, I suggest you look at my blog post - [Demystifying Restricted Boltzmann Machines](https://adityashrm21.github.io/Restricted-Boltzmann-Machines/).
@@ -48,15 +48,18 @@ The Network will be trained for 25 epochs (full training cycles) with a mini-bat
 
 The required data was taken from the available [goodbooks-10k](https://github.com/zygmuntz/goodbooks-10k) dataset. The data comprises of 5 files in total (books, book_tags, ratings, to_read and tags). The file _books.csv_ contains book (`book_id`) details like the name (`original_title`), names of the authors (`authors`) and other information about the books like the average rating, number of ratings, etc.
 
-<center><img src = "imgs/book_reco/books_img.png"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/book_reco/books_img.png?raw=True"></center>
+<br>
 
 The file _ratings.csv_ contains the mapping of various readers (`user_id`) to the books that they have read (`book_id`) along with the ratings (`rating`) given to those books by those users.
 
-<center><img src = "imgs/book_reco/ratings_img.png"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/book_reco/ratings_img.png?raw=True"></center>
+<br>
 
 We also have the _to_reads.csv_ file which gives us the mapping of the books (`book_id`) not yet read by different users (`user_id`) and this is quite helpful for our application as you will see later.
 
-<center><img src = "imgs/book_reco/to_read_img.png"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/book_reco/to_read_img.png?raw=True"></center>
+
 
 ## Data Preprocessing
 
@@ -98,8 +101,10 @@ Try not to print the training data as it would not be a good idea to print such 
 hiddenUnits = 50
 visibleUnits = len(ratings)
 
-vb = tf.placeholder(tf.float32, [visibleUnits])  # Number of unique movies
-# Number of features were going to learn
+# Number of unique movies
+vb = tf.placeholder(tf.float32, [visibleUnits])
+
+# Number of features that we are going to learn
 hb = tf.placeholder(tf.float32, [hiddenUnits])
 W = tf.placeholder(tf.float32, [visibleUnits, hiddenUnits])  # Weight Matrix
 ```
@@ -231,7 +236,8 @@ plt.savefig('error.png')
 
 At this stage, we are done training our model and we will plot our error curve to look at how the error reduces with each epoch. Note that it is important to stop training the data after a certain number of epochs other wise we overfit on the data and our model becomes less generalizable and this is not what we would ever want. You can play around and try training with different epochs and look at your error curve. I trained the model for 25 epochs and this is the graph that I obtained. If you train for more epochs and see that there is not much reduction in the error implies that you are probably overfitting on your training data and it would be a good idea to reduce the number of epochs.
 
-<center><img src = "imgs/book_reco/error.png"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/book_reco/error.png?raw=True"></center>
+<br>
 
 Now that we are done with training our model and gauging its power, let us move on to the actual task of using our data to predict ratings for books not yet read by a user and provide recommendations based on the reconstructed probability distribution.
 
@@ -278,7 +284,7 @@ for book in read_books_id:
 
 We now created a column for predicted recommendations in our ratings data frame and then find the books that the user has already read. We also obtain the book title and author information for these books. This is what the information looks like:
 
-<center><img src = "imgs/book_reco/read.png"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/book_reco/read.png?raw=True"></center>
 <br>
 
 ```python
@@ -312,7 +318,7 @@ for book in grouped_unread['book_id']:
 
 Now that we obtained the ratings for the unread books, we next extracted the titles and author information so that we can see what books got recommended to this user by our model. This is what we see:
 
-<center><img src = "imgs/book_reco/unread.png"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/book_reco/unread.png?raw=True"></center>
 <br>
 
 ```python
