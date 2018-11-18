@@ -242,7 +242,7 @@ inputUser = [train[user]]
 
 Here we are specifying a random reader from our data. We will use this reader in our system to provide book recommendations (feel free to choose any user existing in the data).
 
-```Python
+```python
 # Feeding in the User and Reconstructing the input
 hh0 = tf.nn.sigmoid(tf.matmul(v0, W) + hb)
 vv1 = tf.nn.sigmoid(tf.matmul(hh0, tf.transpose(W)) + vb)
@@ -252,7 +252,7 @@ rec = sess.run(vv1, feed_dict={hh0: feed, W: prv_w, vb: prv_vb})
 
 The above code passes the input from this reader and uses the learned weights and bias matrices to produce an output. This output is the reconstruction of ratings by this user and this will give us the ratings for the books that the user has not already read.
 
-```Python
+```python
 # Creating recommendation score for books in our data
 ratings["Recommendation Score"] = rec[0]
 
@@ -281,7 +281,7 @@ We now created a column for predicted recommendations in our ratings data frame 
 <center><img src = "imgs/book_reco/read.png"></center>
 <br>
 
-```Python
+```python
 # Find all books the mock user has 'not' read before using the to_read data
 unread_books = to_read[to_read['user_id'] == cur_user_id]['book_id']
 unread_books_id = unread_books.tolist()
@@ -296,7 +296,7 @@ grouped_unread = unread_with_score.groupby('book_id', as_index=False)[
 
 Now using the above code, we find the book not already read by this user (we use the third file `to_read.csv` for this purpose). We also find the ratings for these books and summarize them to their means. We are doing this because we will get a rating each time this book is encountered in the dataset (read by another user).
 
-```Python
+```python
 # getting the names and authors of the unread books
 unread_books_names = []
 unread_books_authors = []
@@ -315,7 +315,7 @@ Now that we obtained the ratings for the unread books, we next extracted the tit
 <center><img src = "imgs/book_reco/unread.png"></center>
 <br>
 
-```Python
+```python
 # creating a data frame for unread books with their names, authors and recommendation scores
 unread_books_with_scores = pd.DataFrame({
     'book_name': unread_books_names,
