@@ -365,6 +365,6 @@ With that, I conclude this post and encourage you all to build awesome recommend
 - **Frequency of updates** – As more and more new data gets accumulated, it is important to frequently update the model to incorporate this information.
 - **Prediction on unseen data** – We will require to deal with unseen users and continuously changing features.
 
-We will probably talk about how to handle recommender systems at large scale in a future post! All the code for this tutorial is available on my [GitHub repository](https://github.com/adityashrm21/Book-Recommender-System-RBM). Feel free to use the code and if you liked the tutorial, remember to leave a star on the repository so that it reaches more users.
+We will probably talk about how to handle recommender systems at large scale in a future post! All the code for this tutorial is available on my [GitHub repository](https://github.com/adityashrm21/Book-Recommender-System-RBM).
 
 Note: I will optimize/update the code to use `numpy` and other libraries and make it object oriented. Feel free to add any suggestions and questions in the comments section below!
