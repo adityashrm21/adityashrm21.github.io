@@ -234,7 +234,7 @@ plt.xlabel('Epoch')
 plt.savefig('error.png')
 ```
 
-At this stage, we are done training our model and we will plot our error curve to look at how the error reduces with each epoch. Note that it is important to stop training the data after a certain number of epochs other wise we overfit on the data and our model becomes less generalizable and this is not what we would ever want. You can play around and try training with different epochs and look at your error curve. I trained the model for 25 epochs and this is the graph that I obtained. If you train for more epochs and see that there is not much reduction in the error implies that you are probably overfitting on your training data and it would be a good idea to reduce the number of epochs.
+At this stage, we are done training our model and we will plot our error curve to look at how the error reduces with each epoch. I trained the model for 25 epochs and this is the graph that I obtained. The overfitting will depend on the learning rate that we choose and Geoffrey Hinton summarizes the best practice quite well [here](https://www.cs.toronto.edu/~hinton/absps/guideTR.pdf).
 
 <center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/book_reco/error.png?raw=True"></center>
 <br>
