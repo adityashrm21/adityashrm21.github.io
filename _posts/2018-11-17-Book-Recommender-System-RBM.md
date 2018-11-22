@@ -85,20 +85,26 @@ ratings['List Index'] = ratings.index
 readers_group = ratings.groupby("user_id")
 ```
 
-After the above step, we need to create a list of lists as our training data where each list each list in the training data will be the ratings given to all the books by a particular user normalized into the interval [0,1] (or you can see it as the percentage score). All the books that the user has not read yet will be given the value 0 in this training data. Also, note that the data needs to be normalized before it can be fed to a neural network and hence, we are dividing the ratings by 5. There are a lot of ways to normalize the data and this is one of them.
+After the above step, we need to create a list of lists as our training data where each list each list in the training data will be the ratings given to all the books by a particular user normalized into the interval [0,1] (or you can see it as the percentage score). All the books that the user has not read yet will be given the value 0. Also, note that the data needs to be normalized before it can be fed to a neural network and hence, we are dividing the ratings by 5. There are different ways to normalize the data and this is one of them.
 
 ```python
-train = []
+total = []
 for readerID, curReader in readers_group:
-    temp = [0] * len(ratings)
+    temp = np.zeros(len(ratings))
+
     for num, book in curReader.iterrows():
         temp[book['List Index']] = book['rating'] / 5.0
-    train.append(temp)
+
+    total.append(temp)
+
+random.shuffle(total)
+train = total[:1500]
+valid = total[1500:]
 ```
-Try not to print the training data as it would not be a good idea to print such a large dataset and your program may freeze (it probably will).
+Try not to print the training data as it would not be a good idea to print such a large dataset and your program may freeze (it probably will). We also divide the total data into training and validation sets which we will use later in order to decide on the optimal number of epochs for our training (which is important to avoid overfitting on the training data!).
 
 ```python
-hiddenUnits = 50
+hiddenUnits = 64
 visibleUnits = len(ratings)
 
 # Number of unique movies
@@ -109,7 +115,7 @@ hb = tf.placeholder(tf.float32, [hiddenUnits])
 W = tf.placeholder(tf.float32, [visibleUnits, hiddenUnits])  # Weight Matrix
 ```
 
-In the above code chunk, we are setting our number of visible and hidden units. The choice of hidden units is random and I arrived at this value of 50 after some experimentation (though there might be a really better value than this). The choice of visible units on the other hand, depends on the size of our input data. The weight matrix is created with the size of our visible and hidden units and you will see why this is the case and how this helps us soon!
+In the above code chunk, we are setting our number of visible and hidden units. The choice of hidden units is random and there might be a really better value than this but is mostly as a power of 2 so as to optimally utilize matrix computations on GPU boards. The choice of visible units on the other hand, depends on the size of our input data. The weight matrix is created with the size of our visible and hidden units and you will see why this is the case and how this helps us soon!
 
 ### A note on TensorFlow
 
@@ -134,8 +140,8 @@ So in the above piece of code, we are now doing something similar to one forward
 Note that we are using a Rectified Linear Unit as our activation function here. Other activation functions such as the sigmoid function and the hyperbolic tangent function could also be used but we use ReLU because it is computationally less expensive to compute than the others. This is only one of the reasons why we use them. For more information on what these activation functions are, look at my blog post [Neural Networks - Explained, Demystified and Simplified](https://adityashrm21.github.io/Neural_Networks/) and for a more clear understanding of why ReLUs are better look at [this great answer](https://stats.stackexchange.com/questions/126238/what-are-the-advantages-of-relu-over-sigmoid-function-in-deep-neural-networks) on StackExchange. Let's move on!
 
 ```python
-_v1 = tf.nn.sigmoid(tf.matmul(h0, tf.transpose(W)) +
-                    vb)  # Hidden layer activation
+# Hidden layer activation
+_v1 = tf.nn.sigmoid(tf.matmul(h0, tf.transpose(W)) + vb)  
 v1 = tf.nn.relu(tf.sign(_v1 - tf.random_uniform(tf.shape(_v1))))
 h1 = tf.nn.sigmoid(tf.matmul(v1, W) + hb)
 ```
@@ -202,12 +208,31 @@ sess = tf.Session(config=config)
 sess.run(tf.global_variables_initializer())
 ```
 
-Now we initialized the session in tensorFlow with appropriate configuration for using the GPU effectively. You may need to play around with these settings a little bit of you are trying to use a GPU for running this code. Now we move on to the actual training of our model.
+Now we initialized the session in tensorFlow with appropriate configuration for using the GPU effectively. You may need to play around with these settings a little bit of you are trying to use a GPU for running this code.
 
 ```python
-epochs = 25
-batchsize = 50
+def free_energy(v_sample, W, vb, hb):
+    ''' Function to compute the free energy '''
+    wx_b = np.dot(v_sample, W) + hb
+    vbias_term = np.dot(v_sample, vb)
+    hidden_term = np.sum(np.log(1 + np.exp(wx_b)), axis = 1)
+    return -hidden_term - vbias_term
+```
+Boltzmann Machines (and RBMs) are Energy-based models and a joint configuration, $$(\textbf{v}, \textbf{h})$$ of the visible and hidden units has an energy given by:
+
+$$ \displaystyle E(\textbf{v}, \textbf{h}) = − \sum_{i∈visible}
+a_i v_i − \sum_{j∈hidden} b_jh_j − \sum_{i,j} v_ih_jw_{ij}$$
+
+where $$v_i$$, $$h_j$$ are the binary states of visible unit $$i$$ and hidden unit $$j$$, $$a_i$$, $$b_j$$ are their biases and $$w_{ij}$$ is the weight between them.
+
+We create this function to calculate the free energy of the RBM using the vectorized form of the above equation. To know how to compute the free energy of a Restricted Boltzmann Machine, I suggest you to look at [this great discussion](https://stats.stackexchange.com/questions/114844/how-to-compute-the-free-energy-of-a-rbm-given-its-energy) on StackExchange. Now we move on to the actual training of our model.
+
+```python
+epochs = 60
+batchsize = 100
 errors = []
+energy_train = []
+energy_valid = []
 for i in range(epochs):
     for start, end in zip(range(0, len(train), batchsize), range(batchsize, len(train), batchsize)):
         batch = train[start:end]
@@ -220,26 +245,51 @@ for i in range(epochs):
         prv_w = cur_w
         prv_vb = cur_vb
         prv_hb = cur_hb
+
+    energy_train.append(np.mean(free_energy(train, cur_w, cur_vb, cur_hb)))
+    energy_valid.append(np.mean(free_energy(valid, cur_w, cur_vb, cur_hb)))
+
     errors.append(sess.run(err_sum, feed_dict={
                   v0: train, W: cur_w, vb: cur_vb, hb: cur_hb}))
-    print("Error in epoch {0} is: {1}".format(i, errors[-1]))
+    if i % 10 == 0:
+        print("Error in epoch {0} is: {1}".format(i, errors[i]))
 ```
 
 This code trains our model with the given parameters and data. Note that we are now feeding appropriate values into the placeholders that we created earlier. Each iteration maintains previous weights and biases and updates them with the value of current weights and biases. Finally, error is appended after each epoch to a list of errors which we will use to plot a graph for the error.
 
 ```python
-plt.plot(errors)
-plt.ylabel('Error')
-plt.xlabel('Epoch')
-plt.savefig('error.png')
+fig, ax = plt.subplots()
+ax.plot(energy_train, label='train')
+ax.plot(energy_valid, label='valid')
+leg = ax.legend()
+plt.xlabel("Epoch")
+plt.ylabel("Free Energy")
+plt.savefig("free_energy.png")
+plt.show()
 ```
 
-At this stage, we are done training our model and we will plot our error curve to look at how the error reduces with each epoch. I trained the model for 25 epochs and this is the graph that I obtained. The overfitting will depend on the learning rate that we choose and Geoffrey Hinton summarizes the best practice quite well [here](https://www.cs.toronto.edu/~hinton/absps/guideTR.pdf).
+Also note that we are calculating the free energies using our training and validation data. The plot shows the average free energy for training and the validation dataset with epochs.
 
-<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/book_reco/error.png?raw=True"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/book_reco/free_energy.png?raw=True"></center>
 <br>
 
-Now that we are done with training our model and gauging its power, let us move on to the actual task of using our data to predict ratings for books not yet read by a user and provide recommendations based on the reconstructed probability distribution.
+If the model is not overfitting at all, the average free energy should be about the same on training and validation data. As the model starts to overfit the average free energy of the validation data will rise relative to the average free energy of the training data and this gap represents the amount of overfitting. So we can determine the number of epochs to run the training for using this approach. Looking at the plot, we can safely decide the number of epochs to be around 50 (I trained the model with 60 epochs after looking at this plot).
+Geoffrey Hinton summarizes the best practices for selecting the hyperparameters quite well [here](https://www.cs.toronto.edu/~hinton/absps/guideTR.pdf) and this is one of his suggestions to arrive at a good number of epochs.
+
+```python
+plt.plot(errors)
+plt.xlabel("Epoch")
+plt.ylabel("Error")
+plt.savefig("error.png")
+plt.show()
+```
+
+After we are done training our model, we will plot our error curve to look at how the error reduces with each epoch. As mentioned, I trained the model for 60 epochs and this is the graph that I obtained.
+
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/book_reco/error60.png?raw=True"></center>
+<br>
+
+Now that we are done with training our model, let us move on to the actual task of using our data to predict ratings for books not yet read by a user and provide recommendations based on the reconstructed probability distribution.
 
 ```python
 user = 22
