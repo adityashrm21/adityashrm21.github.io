@@ -56,7 +56,7 @@ $$\frac{\delta}{\delta \alpha} f(x + \alpha\boldsymbol{u})$$
 
 $$= \boldsymbol{u}f'(x + \alpha\boldsymbol{u}) \mid_{\alpha = 0}$$
 
-$$\hspace{4cm} = \boldsymbol{u}^\top \nabla_{\boldsymbol{x}} f(\boldsymbol{x}) \hspace{1cm}$$ (when $$\alpha = 0$$)
+$$\hspace{9.5cm} = \boldsymbol{u}^\top \nabla_{\boldsymbol{x}} f(\boldsymbol{x}) \hspace{1cm}$$ (when $$\alpha = 0$$)
 
 We will need to find the direction in which $$f$$ decreases the fastest in order to minimize it (reach the global or a good local minimum). To do that, we can use the directional derivative. We need to solve for a $$u$$ such that:
 
