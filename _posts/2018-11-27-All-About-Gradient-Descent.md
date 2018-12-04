@@ -41,7 +41,7 @@ Now that we know what a local minima or a local maxima is, let us talk about the
 
 A challenge which is very common in the context of deep learning is that objective functions often are not so simple and we may have a lot of local minima and a lot of saddle points which makes it difficult to find the global optimum. Also, the functions are mostly multidimensional which makes it even more tricky to arrive at the global optimal value. Due to all of this, we often settle for a value of $$f$$ which is very low, but not necessarily the most optimal value and as you will see when you further study deep learning, this method of arriving at a low value of the objective function finds this value quickly enough to be useful. To understand this, look the picture below.
 
-<center> <img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/gd/minima.png?raw=True" width = "700"></center>
+<center> <img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/gd/minima.png?raw=True" width = "800"></center>
 <br>
 
 ## Optimization in multiple dimensions
