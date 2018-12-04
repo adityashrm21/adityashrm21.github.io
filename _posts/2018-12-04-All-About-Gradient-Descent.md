@@ -135,7 +135,7 @@ test_X = X[perm[div:]]
 test_y = y[perm[div:]]
 ```
 
-The above code snippet contains the code to get started with our regression problem. We are creating a dataset with some relation between the response(y) and the predictor variables (X). Note that of you run this code in a Jupyter notebook, you will need to add the random seed in every cell where there is some randomness in generating the data or the variables (it is just the way how things are for now, sadly!). Now we will write a function which will return the gradient for us that we will use to update our parameters step by step.
+The above code snippet contains the code to get started with our regression problem. We are creating a dataset with some relation between the response ($y$) and the predictor variables ($X$). Note that of you run this code in a Jupyter Notebook, you will need to add the random seed in every cell where there is some randomness in generating the data or the variables (it is just the way how things are for now, sadly!). Now we will write a function which will return the gradient for us that we will use to update our parameters step by step.
 
 ```python
 # function to get the gradient and the means squared error
