@@ -31,17 +31,17 @@ Now we know that the derivative of a function at a point gives us the slope of t
 
 Using the concept of the derivative above, we can see that the value of the function $$f(x)$$ at $$x - \epsilon * sign(f'(x))$$ always takes $$f(x)$$ towards a lower value. This process of using the gradient (derivative) of $$f(x)$$ to reach a point where the value of the function is minimum is known as **gradient descent**. We are simply moving $$f(x)$$ to a lower value by moving $$x$$ in a direction opposite to the sign of the derivative of $$f(x)$$ in small steps defined by $$\epsilon$$. Take a moment and think about it. Look at the image below and convince yourselves that the above proposition holds true.
 
-<center> <img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/gd/derivative.png?raw=True" width = "400"></center>
+<center> <img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/gd/derivative.png?raw=True" width = "500"></center>
 
 Here is a better illustration of how gradient descent is used to reach a local minima using the method described above from [the Deep Learning book](https://www.deeplearningbook.org/) by Bengio, Goodfellow and Courville (I highly recommend this book for someone who wants to go deep into the theory of deep learning concepts).
 
-<center> <img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/gd/descent.png?raw=True" width = "400"></center>
+<center> <img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/gd/descent.png?raw=True" width = "650"></center>
 
 Now that we know what a local minima or a local maxima is, let us talk about the global minima and maxima. In general, we will ignore talking about maxima from now on as we will align our discussion with the convention that we need to minimize the objective function. A global minima is the point where the function's value is the minimum of all the possible points in the domain of the function. In other words, there is no other point $$x$$ such that $$f(x) < f(x^*)$$ where $$x^*$$ is the global minima of the function $$f(x)$$. Notice the strict inequality there. This means that there can be multiple points which can act as the global minima. It should be clear that there can also be local minima which are not globally optimal.
 
 A challenge which is very common in the context of deep learning is that objective functions often are not so simple and we may have a lot of local minima and a lot of saddle points which makes it difficult to find the global optimum. Also, the functions are mostly multidimensional which makes it even more tricky to arrive at the global optimal value. Due to all of this, we often settle for a value of $$f$$ which is very low, but not necessarily the most optimal value and as you will see when you further study deep learning, this method of arriving at a low value of the objective function finds this value quickly enough to be useful. To understand this, look the picture below.
 
-<center> <img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/gd/minima.png?raw=True" width = "400"></center>
+<center> <img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/gd/minima.png?raw=True" width = "700"></center>
 <br>
 
 ## Optimization in multiple dimensions
