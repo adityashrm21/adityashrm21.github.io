@@ -50,13 +50,13 @@ We often minimize functions that have multiple inputs: $$f: \mathbb{R}^{n} \righ
 
 Now, to incorporate the effect of each component of the input vector, we will use the concept of partial derivatives. Partial derivatives are similar to the normal derivatives that we saw above with the only difference being that they capture the gradient of the function in a specific direction defined by that specific component. For instance, if the input is a 2-D vector then one of its partial derivatives would be the gradient in the x-direction and the other in the y-direction. Partial derivatives are denoted by a different symbol ($$\delta$$ instead of $$d$$) and the partial derivative of a function $$y = f(\boldsymbol{x})$$ with respect to $$x_i$$ would be written as $$\frac{\delta y}{\delta x_i}$$. So the **gradient** of $$f$$ will be the vector of partial derivatives of $$f$$ with respect to all the components $$x_i$$ of the input vector $$\boldsymbol{x}$$ and it is denoted by $$\nabla_{\boldsymbol{x}} f(\boldsymbol{x})$$. The critical points in multiple dimensions are the points where the partial derivatives with the respect to all the components is zero (i.e., every element of the gradient is zero).
 
-In more mathematical terms, the directional derivative of the function in the dorection $$\boldsymbol{u}$$ is the slope of the function in the directional derivative defined by $$u$$ (where $$u$$ is a unit vector). In other words, the directional derivative of the function $$f(x + \alpha\boldsymbol{u})$$ with respect to $$\alpha$$, evaluated at $$\alpha = 0$$. The derivative of $$f(x + \alpha\boldsymbol{u})$$ with respect to $$\alpha$$ would be given by
+In more mathematical terms, the directional derivative of the function in the direction $$\boldsymbol{u}$$ is the slope of the function in the directional derivative defined by $$u$$ (where $$u$$ is a unit vector). In other words, the directional derivative of the function $$f(x + \alpha\boldsymbol{u})$$ with respect to $$\alpha$$, evaluated at $$\alpha = 0$$. The derivative of $$f(x + \alpha\boldsymbol{u})$$ with respect to $$\alpha$$ would be given by
 
 $$\frac{\delta}{\delta \alpha} f(x + \alpha\boldsymbol{u})$$
 
 $$= \boldsymbol{u}f'(x + \alpha\boldsymbol{u}) \mid_{\alpha = 0}$$
 
-$$= \boldsymbol{u}^\top \nabla_{\boldsymbol{x}} f(\boldsymbol{x}) \hspace{1cm}$$ (when $$\alpha = 0$$)
+$$\hspace{4cm} = \boldsymbol{u}^\top \nabla_{\boldsymbol{x}} f(\boldsymbol{x}) \hspace{1cm}$$ (when $$\alpha = 0$$)
 
 We will need to find the direction in which $$f$$ decreases the fastest in order to minimize it (reach the global or a good local minimum). To do that, we can use the directional derivative. We need to solve for a $$u$$ such that:
 
