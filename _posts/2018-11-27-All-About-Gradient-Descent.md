@@ -46,25 +46,25 @@ A challenge which is very common in the context of deep learning is that objecti
 
 ## Optimization in multiple dimensions
 
-We often minimize functions that have multiple inputs: $$f: \mathbb{R}^{n} \rightarrow \mathbb{R}$$. This will need us to obtain a single scalar value for the concept of minimization to make sense. Most real world problems are not that simple and are mostly multi-dimensional and so let us try to understand how gradient descent is used in multiple dimensions. Suppose instead of a single number, now the input is a vector $$\bm{x}$$ in $$n$$ dimensions. So $$\bm{x} = \{x_1, x_2, x_3, .... , x_n\}$$.
+We often minimize functions that have multiple inputs: $$f: \mathbb{R}^{n} \rightarrow \mathbb{R}$$. This will need us to obtain a single scalar value for the concept of minimization to make sense. Most real world problems are not that simple and are mostly multi-dimensional and so let us try to understand how gradient descent is used in multiple dimensions. Suppose instead of a single number, now the input is a vector $$\boldsymbol{x}$$ in $$n$$ dimensions. So $$\boldsymbol{x} = \{x_1, x_2, x_3, .... , x_n\}$$.
 
-Now, to incorporate the effect of each component of the input vector, we will use the concept of partial derivatives. Partial derivatives are similar to the normal derivatives that we saw above with the only difference being that they capture the gradient of the function in a specific direction defined by that specific component. For instance, if the input is a 2-D vector then one of its partial derivatives would be the gradient in the x-direction and the other in the y-direction. Partial derivatives are denoted by a different symbol ($$\delta$$ instead of $$d$$) and the partial derivative of a function $$y = f(\bm{x})$$ with respect to $$x_i$$ would be written as $$\frac{\delta y}{\delta x_i}$$. So the **gradient** of $$f$$ will be the vector of partial derivatives of $$f$$ with respect to all the components $$x_i$$ of the input vector $$\bm{x}$$ and it is denoted by $$\nabla_{\bm{x}} f(\bm{x})$$. The critical points in multiple dimensions are the points where the partial derivatives with the respect to all the components is zero (i.e., every element of the gradient is zero).
+Now, to incorporate the effect of each component of the input vector, we will use the concept of partial derivatives. Partial derivatives are similar to the normal derivatives that we saw above with the only difference being that they capture the gradient of the function in a specific direction defined by that specific component. For instance, if the input is a 2-D vector then one of its partial derivatives would be the gradient in the x-direction and the other in the y-direction. Partial derivatives are denoted by a different symbol ($$\delta$$ instead of $$d$$) and the partial derivative of a function $$y = f(\boldsymbol{x})$$ with respect to $$x_i$$ would be written as $$\frac{\delta y}{\delta x_i}$$. So the **gradient** of $$f$$ will be the vector of partial derivatives of $$f$$ with respect to all the components $$x_i$$ of the input vector $$\boldsymbol{x}$$ and it is denoted by $$\nabla_{\boldsymbol{x}} f(\boldsymbol{x})$$. The critical points in multiple dimensions are the points where the partial derivatives with the respect to all the components is zero (i.e., every element of the gradient is zero).
 
-In more mathematical terms, the directional derivative of the function in the dorection $$\bm{u}$$ is the slope of the function in the directional derivative defined by $$u$$ (where $$u$$ is a unit vector). In other words, the directional derivative of the function $$f(x + \alpha\bm{u})$$ with respect to $$\alpha$$, evaluated at $$\alpha = 0$$. The derivative of $$f(x + \alpha\bm{u})$$ with respect to $$\alpha$$ would be given by
+In more mathematical terms, the directional derivative of the function in the dorection $$\boldsymbol{u}$$ is the slope of the function in the directional derivative defined by $$u$$ (where $$u$$ is a unit vector). In other words, the directional derivative of the function $$f(x + \alpha\boldsymbol{u})$$ with respect to $$\alpha$$, evaluated at $$\alpha = 0$$. The derivative of $$f(x + \alpha\boldsymbol{u})$$ with respect to $$\alpha$$ would be given by
 
-$$\frac{\delta}{\delta \alpha} f(x + \alpha\bm{u})$$
+$$\frac{\delta}{\delta \alpha} f(x + \alpha\boldsymbol{u})$$
 
-$$= \bm{u}f'(x + \alpha\bm{u}) \mid_{\alpha = 0}$$
+$$= \boldsymbol{u}f'(x + \alpha\boldsymbol{u}) \mid_{\alpha = 0}$$
 
-$$= \bm{u}^\top \nabla_{\bm{x}} f(\bm{x}) \hspace{1cm}$$ (when $$\alpha = 0$$)
+$$= \boldsymbol{u}^\top \nabla_{\boldsymbol{x}} f(\boldsymbol{x}) \hspace{1cm}$$ (when $$\alpha = 0$$)
 
 We will need to find the direction in which $$f$$ decreases the fastest in order to minimize it (reach the global or a good local minimum). To do that, we can use the directional derivative. We need to solve for a $$u$$ such that:
 
-$$= \underset{\bm{u}, \bm{u^\top}\bm{u} = 1} {\text{min}} \bm{u}^\top \nabla_{\bm{x}} f(\bm{x})$$
+$$= \underset{\boldsymbol{u}, \boldsymbol{u^\top}\boldsymbol{u} = 1} {\text{min}} \boldsymbol{u}^\top \nabla_{\boldsymbol{x}} f(\boldsymbol{x})$$
 
-$$\underset{\bm{u}, \bm{u^\top}\bm{u} = 1} {\text{min}} \mid\mid\bm{u}\mid\mid_2 \mid\mid\nabla_{\bm{x}} f(\bm{x})\mid\mid_2 \text{cos} \ \theta$$
+$$\underset{\boldsymbol{u}, \boldsymbol{u^\top}\boldsymbol{u} = 1} {\text{min}} \mid\mid\boldsymbol{u}\mid\mid_2 \mid\mid\nabla_{\boldsymbol{x}} f(\boldsymbol{x})\mid\mid_2 \text{cos} \ \theta$$
 
-and after substituting $$\mid\mid\bm{u}\mid\mid_2 = 1$$ and ignoring the second factor as it doesn't depend on $$\bm{u}$$, we arrive at $$\text{min}_u \   \text{cos}\  \theta$$. We will get the minimum of this quantity when $$\theta = 180 \degree $$ which means that the gradient and $$\bm{u}$$ are in the exact opposite directions. This means that if the gradient is in the direction of uphill, the function will move towards the minimum when we move directly opposite to the gradient (direction of downhill). This is known as the **method of steepest descent** or **gradient descent**. This helps us propose a new point at every step which is given by $$(x - \epsilon \nabla_{\bm{x}} f(\bm{x}))$$ where $$\epsilon$$ is a small positive scalar called the **learning rate** (which I am sure you might have heard about if you have read about neural networks or deep learning algorithms in general). This number is chosen such that the the value of the function at this new point will be smaller than the previous value. Typically, it is initialized as a small constant. There are various methods and empirical techniques that have been used to arrive at a good learning rate. Look at [this article](https://medium.freecodecamp.org/how-to-pick-the-best-learning-rate-for-your-machine-learning-project-9c28865039a8) if you want to read about some techniques to select a good learning rate for your project. Sometimes, we just try out different values of $$\epsilon$$ and choose the one which minimizes our objective function the most and this strategy is known as **line search**. The criteria for the method of gradient descent to converge is that all the partial derivatives become zero at a point (every element of the gradient becomes zero). This might not always happen and we need to be satisfied with a small enough difference between the gradient and zero defined by a tolerance value while some other times, it is possible to directly solve for the value where the gradient becomes zero ($$\nabla_{\bm{x}} f(\bm{x}) = 0$$). Here is a picture depicting how different starting points can lead to different local optima when found using gradient descent:
+and after substituting $$\mid\mid\boldsymbol{u}\mid\mid_2 = 1$$ and ignoring the second factor as it doesn't depend on $$\boldsymbol{u}$$, we arrive at $$\text{min}_u \   \text{cos}\  \theta$$. We will get the minimum of this quantity when $$\theta = 180 \degree $$ which means that the gradient and $$\boldsymbol{u}$$ are in the exact opposite directions. This means that if the gradient is in the direction of uphill, the function will move towards the minimum when we move directly opposite to the gradient (direction of downhill). This is known as the **method of steepest descent** or **gradient descent**. This helps us propose a new point at every step which is given by $$(x - \epsilon \nabla_{\boldsymbol{x}} f(\boldsymbol{x}))$$ where $$\epsilon$$ is a small positive scalar called the **learning rate** (which I am sure you might have heard about if you have read about neural networks or deep learning algorithms in general). This number is chosen such that the the value of the function at this new point will be smaller than the previous value. Typically, it is initialized as a small constant. There are various methods and empirical techniques that have been used to arrive at a good learning rate. Look at [this article](https://medium.freecodecamp.org/how-to-pick-the-best-learning-rate-for-your-machine-learning-project-9c28865039a8) if you want to read about some techniques to select a good learning rate for your project. Sometimes, we just try out different values of $$\epsilon$$ and choose the one which minimizes our objective function the most and this strategy is known as **line search**. The criteria for the method of gradient descent to converge is that all the partial derivatives become zero at a point (every element of the gradient becomes zero). This might not always happen and we need to be satisfied with a small enough difference between the gradient and zero defined by a tolerance value while some other times, it is possible to directly solve for the value where the gradient becomes zero ($$\nabla_{\boldsymbol{x}} f(\boldsymbol{x}) = 0$$). Here is a picture depicting how different starting points can lead to different local optima when found using gradient descent:
 
 <br>
 <center><img src = "https://cdn-images-1.medium.com/max/1200/1*t4aYsxpCqz2eymJ4zkUS9Q.png" width = "450"></center>
@@ -82,20 +82,20 @@ $$Q(w) = \frac{1}{m} \displaystyle \sum_{i=1}^{m} Q_i(w)$$
 
 where we are trying to estimate the parameter $$w$$ which minimizes the objective function $$Q(w)$$. Each $$ Q_{i}$$ is typically associated with the $$i$$-th observation in the data set (used for training). To get the gradient of these additive cost functions, we require a sum over all the training examples:
 
-$$\nabla_{\bm{\theta}} Q(\bm{\theta}) = \frac{1}{m} \displaystyle \sum_{i=1}^{m} \nabla_{\bm{\theta}}Q(\bm{x}^{(i)}, y^{(i)}, \bm{\theta
+$$\nabla_{\boldsymbol{\theta}} Q(\boldsymbol{\theta}) = \frac{1}{m} \displaystyle \sum_{i=1}^{m} \nabla_{\boldsymbol{\theta}}Q(\boldsymbol{x}^{(i)}, y^{(i)}, \boldsymbol{\theta
   })$$
 
-where $$\bm{\theta}$$ is nothing but the weight matrix that we are trying to find an optimal value for.
+where $$\boldsymbol{\theta}$$ is nothing but the weight matrix that we are trying to find an optimal value for.
 Most of the times in deep learning, we find ourselves minimizing the gradient of the negative log-likelihood of a function or of a least squares sum. The important thing to note here is that this will require us to sum over all the $$m$$ training examples and this task becomes computationally intensive and takes up more and more time ($$O(m)$$ in time) as the number of examples in our training set increases. In machine learning, since large training sets are good for generalization, they also make the task more computational expensive.
 
 In order to tackle this, we use a stochastic approximation of the gradient descent optimization. It is called stochastic because samples are selected randomly (or shuffled) instead of as a single group (as in standard gradient descent) or in the order they appear in the training set. In this algorithm, instead of using the whole training dataset with $$m$$ examples for the update of weights using the method described in gradient descent, we use a small subset of the training examples (typically between 10 to 1000 examples). This makes the cost per update of SGD independent of the number of training examples. The estimate of the gradient is now calculated using a subset of the training set with $$m'$$ examples which now becomes:
 
-$$\bm{g} = \frac{1}{m'} \displaystyle \sum_{i=1}^{m'} \nabla_{\bm{\theta}}Q(\bm{x}^{(i)}, y^{(i)}, \bm{\theta
+$$ \boldsymbol{g} = \frac{1}{m'} \displaystyle \sum_{i=1}^{m'} \nabla_{\boldsymbol{\theta}}Q(\boldsymbol{x}^{(i)}, y^{(i)}, \boldsymbol{\theta
   })$$
 
-using the exampled from the mini-batch $$\mathbb{B}$$. The estimate of $$\bm{\theta}$$ will now follow the path downhill with
+using the exampled from the mini-batch $$\mathbb{B}$$. The estimate of $$\boldsymbol{\theta}$$ will now follow the path downhill with
 
-$$\bm{\theta} \leftarrow \bm{\theta} - \epsilon \bm{g}$$
+$$\boldsymbol{\theta} \leftarrow \boldsymbol{\theta} - \epsilon \boldsymbol{g}$$
 
 where $$\epsilon$$ is the learning rate. One difference to note here is the way the term Stochastic Gradient Descent is being used here. To be specific, SGD is the stochastic approximation of gradient descent which uses only a single example per iteration. This is the extreme case of what we actually use in practice which we described above and it is called mini-batch stochastic gradient descent. So **mini-batch stochastic gradient descent** is a compromise between full-batch gradient descent and SGD. Now that we have an idea of what gradient descent is and of the actual variation that is used in practice (mini-batch SGD), let us learn how to implement these algorithms in python.
 
@@ -113,7 +113,7 @@ In order to understand the full implementation and use of gradient descent in a 
 
 #### Linear Regression with Gradient Descent
 
-```{python}
+```python
 # importing required libraries (numpy only in this case)
 import numpy as np
 
@@ -137,7 +137,7 @@ test_y = y[perm[div:]]
 
 The above code snippet contains the code to get started with our regression problem. We are creating a dataset with some relation between the response(y) and the predictor variables (X). Note that of you run this code in a Jupyter notebook, you will need to add the random seed in every cell where there is some randomness in generating the data or the variables (it is just the way how things are for now, sadly!). Now we will write a function which will return the gradient for us that we will use to update our parameters step by step.
 
-```{python}
+```python
 # function to get the gradient and the means squared error
 def gradient(x, y, w, b):
     y_pred = x.dot(w).flatten() + b
@@ -162,7 +162,7 @@ $$\frac{\delta}{\delta w_0} Q(x, y, w) = \frac{-2}{m} \displaystyle \sum_{i=1}^m
 
 I am not using the matrix notation here in which case, we will need to take transpose of appropriate matrices in order to multiply them properly. COnvince yourselves that these equations are what you see in the code for the gradient function implemented above (the code is using matrix algebra!). Now we initialize the variables and parameters and run our algorithm until convergence which is defined by a tolerance value for the slope parameter ($$w_1$$).
 
-```{python}
+```python
 # initializing variables
 w = np.random.randn(1)
 b = np.random.randn(1)
@@ -208,7 +208,7 @@ which gives us the obtained weights and biases that optimizes the objective func
 
 We will use the same dataset for this implementation and without wasting any mental energy further, let's jump into the code straight on!
 
-```{python}
+```python
 import numpy as np
 import tensorflow as tf
 
@@ -230,7 +230,7 @@ test_y = Y[perm[div:]]
 
 The above code is common for the previous implementation. Now we will write a function to return the predictions and the mean squared error.
 
-```{python}
+```python
 def calc(x, y, w, b):
     # Returns predictions and error
     predictions = tf.multiply(x, w) + b
@@ -238,7 +238,7 @@ def calc(x, y, w, b):
     return [ predictions, error ]
 ```
 
-```{python}
+```python
 # x and y are placeholders for our training data
 x = tf.placeholder("float64")
 y = tf.placeholder("float64")
@@ -261,7 +261,7 @@ model = tf.global_variables_initializer()
 
 The above code initializes the required variables using TensorFlow and creates the computational graph that we will later execute in a `tf.Session()`.
 
-```{python}
+```python
 with tf.Session() as session:
     session.run(model)
     for i in range(70):
