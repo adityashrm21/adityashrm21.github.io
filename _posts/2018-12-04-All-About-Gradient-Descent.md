@@ -279,8 +279,14 @@ with tf.Session() as session:
 ```
 
 This code will run the computational graph. When we request the output of a node with Session.run() TensorFlow backtracks through the graph and runs all the nodes that provide input to the requested output node. We can pass multiple tensors to `tf.Session.run()`. For more information on the basics of TensorFlow, I recommend you to go through [this official low-level intro](https://www.tensorflow.org/guide/low_level_intro).
+The output of the above code is:
 
-We talked about mini-batch SGD but didn't actually implement it. I am providing you with [this link](https://github.com/adityashrm21/Book-Recommender-System-RBM/blob/master/book_reco.py#L153) where I have implemented the same. It is almost the same as using `feed_dict={x: x_value, y: y_value}` in the code above except that you will provide mini-batches of your data instead of each single example like how we did above.
+```
+Predicted model: [10.49069343]x + [-2.20276962]
+Test Cost = 1.259932334050175
+```
+
+We talked about mini-batch SGD but didn't actually implement it. I am providing you with [this link](https://github.com/adityashrm21/Book-Recommender-System-RBM/blob/master/book_reco.py#L153) where I have implemented the same. It is almost the same as using `feed_dict={x: x_value, y: y_value}` in the code above except that you will provide mini-batches of your data instead of each single example like how we did in Stochastic Gradient Descent.
 
 ## Conclusion
 
