@@ -39,7 +39,7 @@ Here is a better illustration of how gradient descent is used to reach a local m
 
 Now that we know what a local minima or a local maxima is, let us talk about the global minima and maxima. In general, we will ignore talking about maxima from now on as we will align our discussion with the convention that we need to minimize the objective function. A global minima is the point where the function's value is the minimum of all the possible points in the domain of the function. In other words, there is no other point $$x$$ such that $$f(x) < f(x^*)$$ where $$x^*$$ is the global minima of the function $$f(x)$$. Notice the strict inequality there. This means that there can be multiple points which can act as the global minima. It should be clear that there can also be local minima which are not globally optimal.
 
-A challenge which is very common in the context of deep learning is that objective functions often are not so simple and we may have a lot of local minima and a lot of saddle points which makes it difficult to find the global optimum. Also, the functions are mostly multidimensional which makes it even more tricky to arrive at the global optimal value. Due to all of this, we often settle for a value of $$f$$ which is very low, but not necessarily the most optimal value and as you will see when you further study deep learning, this method of arriving at a low value of the objective function finds this value quickly enough to be useful. To understand this, look the picture below.
+A challenge which is very common in the context of deep learning is that objective functions often are not so simple and we may have a lot of local minima and a lot of saddle points which makes it difficult to find the global optimum. Also, the functions are mostly multidimensional which makes it even more tricky to arrive at the global optimal value. Due to all of this, we often settle for a value of $$f$$ which is very low, but not necessarily the most optimal value and as you will see when you further study deep learning, this method of arriving at a low value of the objective function finds this value quickly enough to be useful. To understand this, look at the picture below.
 
 <center> <img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/gd/minima.png?raw=True" width = "800"></center>
 <br>
@@ -70,6 +70,7 @@ and after substituting $$\mid\mid\boldsymbol{u}\mid\mid_2 = 1$$ and ignoring the
 <center><img src = "https://cdn-images-1.medium.com/max/1200/1*t4aYsxpCqz2eymJ4zkUS9Q.png" width = "450"></center>
 <br>
 
+One important thing to note is that the convergence point of gradient descent depends on the initialization of the parameters.
 Gradient descent is not limited to continuous spaces and can be optimized to discrete spaces. Sometimes it is also possible to have both the input and the output as vectors and in those cases, we need to deal with the above method using Jacobian and Hessian matrices but we are not going to go into that. You can read more about the it from [page 84 of this chapter](https://www.deeplearningbook.org/contents/numerical.html) from the Deep Learning Book.
 
 Now we will talk about the most used algorithm in the field of deep learning based on gradient descent called **Stochastic Gradient Descent**.
