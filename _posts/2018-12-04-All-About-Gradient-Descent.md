@@ -2,7 +2,7 @@
 layout: post
 title: All you need to know about Gradient Descent
 author: Aditya Sharma
-date: Nov 2018
+date: Dec 04, 2018
 ---
 
 ## Introduction
