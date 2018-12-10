@@ -9,7 +9,7 @@ date: Dec 04, 2018
 
 Most deep learning algorithms (also machine learning algorithms, in general) involve optimization of some sort which refers to the task of minimizing or maximizing a function $$f(x)$$ by changing the values of the input $$x$$. The convention is to minimize the function and if we need to maximize it in some scenario (for example a transformation of the function), we will minimize $$-f(x)$$ instead of maximizing $$f(x)$$. This keeps things less confusing and consistent.
 
-The function that we want to minimize is often called as the **objective function**. It is also called by other names such as cost function, loss function, error function, etc. This is the function which we define using the problem that we want to solve using deep learning and an appropriate choice of properties that make the function easier to deal with for the optimization task. The convention used for defining the value that minimizes or maximizes the function is denote by $$x^* =$$ arg min$$f(x)$$. Our goal is to find this optimal value (or a similar value not so optimal in some cases) that minimizes our objective function.
+The function that we want to minimize is often called the **objective function**. It is also called by other names such as cost function, loss function, error function, etc. This is the function which we define using the problem that we want to solve using deep learning and an appropriate choice of properties that make the function easier to deal with for the optimization task. The convention used for defining the value that minimizes or maximizes the function is denote by $$x^* =$$ arg min$$f(x)$$. Our goal is to find this optimal value (or a similar value not so optimal in some cases) that minimizes our objective function.
 
 Let us now review some basic calculus that we need to know in order to understand how gradient descent works.
 
@@ -25,7 +25,7 @@ $$ f(x + \epsilon) \approx f(x) + \epsilon f'(x)$$
 
 The way this derivative is useful for us is that it tells us how to change $$x$$ in order to get a small improvement in $$y$$.
 
-Now we know that the derivative of a function at a point gives us the slope of the function. When we have a zero slope at a point $$x$$ (i.e., $$f'(x) = 0$$), we call $$x$$ as a critical point or a stationary point. This stationary point can either be a local minimum or a local maximum or none of the above two. When the value of $$f(x)$$ is lower than its value at of all the neighbors of $$x$$, then $$x$$ is called as the local minimum. Similarly, if the value of $$f(x)$$ is greater than its value at all the neighboring points of $$x$$, then $$x$$ is called as the local maximum. There are functions where the value of $$f(x)$$ is greater than some of $$x$$'s neighbors and less than some other neighbors. Such a point is neither a minimum nor a maximum and is known as a saddle point. Let us visualize these critical points in 1-D. Contrast the saddle point as compared to the local minimum and the local maximum point.
+Now we know that the derivative of a function at a point gives us the slope of the function. When we have a zero slope at a point $$x$$ (i.e., $$f'(x) = 0$$), we call $$x$$ as a critical point or a stationary point. This stationary point can either be a local minimum or a local maximum or none of the above two. When the value of $$f(x)$$ is lower than its value at of all the neighbors of $$x$$, then $$x$$ is called the local minimum. Similarly, if the value of $$f(x)$$ is greater than its value at all the neighboring points of $$x$$, then $$x$$ is called the local maximum. There are functions where the value of $$f(x)$$ is greater than some of $$x$$'s neighbors and less than some other neighbors. Such a point is neither a minimum nor a maximum and is known as a saddle point. Let us visualize these critical points in 1-D. Contrast the saddle point as compared to the local minimum and the local maximum point.
 
 <center> <img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/gd/criticalpts.png?raw=True"></center>
 
@@ -94,7 +94,7 @@ In order to tackle this, we use a stochastic approximation of the gradient desce
 $$ \boldsymbol{g} = \frac{1}{m'} \displaystyle \sum_{i=1}^{m'} \nabla_{\boldsymbol{\theta}}Q(\boldsymbol{x}^{(i)}, y^{(i)}, \boldsymbol{\theta
   })$$
 
-using the exampled from the mini-batch $$\mathbb{B}$$. The estimate of $$\boldsymbol{\theta}$$ will now follow the path downhill with
+using the examples from the mini-batch $$\mathbb{B}$$. The estimate of $$\boldsymbol{\theta}$$ will now follow the path downhill with
 
 $$\boldsymbol{\theta} \leftarrow \boldsymbol{\theta} - \epsilon \boldsymbol{g}$$
 
@@ -136,7 +136,7 @@ test_X = X[perm[div:]]
 test_y = y[perm[div:]]
 ```
 
-The above code snippet contains the code to get started with our regression problem. We are creating a dataset with some relation between the response ($y$) and the predictor variables ($X$). Note that of you run this code in a Jupyter Notebook, you will need to add the random seed in every cell where there is some randomness in generating the data or the variables (it is just the way how things are for now, sadly!). Now we will write a function which will return the gradient for us that we will use to update our parameters step by step.
+The above code snippet contains the code to get started with our regression problem. We are creating a dataset with some relation between the response ($$y$$) and the predictor variables ($$X$$). Note that of you run this code in a Jupyter Notebook, you will need to add the random seed in every cell where there is some randomness in generating the data or the variables (it is just the way how things are for now, sadly!). Now we will write a function which will return the gradient for us that we will use to update our parameters step by step.
 
 ```python
 # function to get the gradient and the means squared error
@@ -161,7 +161,7 @@ $$\frac{\delta}{\delta w_1} Q(x, y, w) = \frac{-2}{m} \displaystyle \sum_{i=1}^m
 
 $$\frac{\delta}{\delta w_0} Q(x, y, w) = \frac{-2}{m} \displaystyle \sum_{i=1}^m(w_0 + w_1 x_i - y_i)$$
 
-I am not using the matrix notation here in which case, we will need to take transpose of appropriate matrices in order to multiply them properly. COnvince yourselves that these equations are what you see in the code for the gradient function implemented above (the code is using matrix algebra!). Now we initialize the variables and parameters and run our algorithm until convergence which is defined by a tolerance value for the slope parameter ($$w_1$$).
+I am not using the matrix notation here in which case, we will need to take transpose of appropriate matrices in order to multiply them properly. Convince yourselves that these equations are what you see in the code for the gradient function implemented above (the code is using matrix algebra!). Now we initialize the variables and parameters and run our algorithm until convergence which is defined by a tolerance value for the slope parameter ($$w_1$$).
 
 ```python
 # initializing variables
