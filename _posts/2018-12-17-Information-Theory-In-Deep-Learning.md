@@ -9,7 +9,7 @@ In this post, I will try to summarize the findings and research done by Prof. Na
 
 ## Motivation
 
-If you have tried reading about the math behind a lot of deep learning concepts, I am sure you must have come across some topics from information theory such as the Kullback-Leibler divergence (aka. KL divergence), Jensen-Shannon divergence, Shannon entropy, etc. For me, I came across this concept too many times to not write about it, especially while reading about generative models such as Restricted Boltzmann Machines and General Adversarial Networks. While searching on the topics I came across this great talk by Prof. Tishby which captured my attention and made me think about deep neural networks with a totally different perspective. So I decided to research his findings and learn about this new angle of looking at the working of DNNs. I enjoyed so much reading about the topic that I decided to write a blog post to document his findings and my learnings so that it might help someone like you who might want to learn about it in a much shorter time. The motivation to write this post started from knowing about different information theory measures used in deep learning but I ended up reading much more and learned a lot of exciting stuff that I am eager to share with you. So without wasting any more mental energy, let's move on to the discussion on Information Theory!
+If you have tried reading about the math behind a lot of deep learning concepts, I am sure you must have come across some topics from information theory such as the Kullback-Leibler divergence (aka. KL divergence), Jensen-Shannon divergence, Shannon entropy, etc. For me, I came across this concept too many times to not write about it, especially while reading about generative models such as Restricted Boltzmann Machines and General Adversarial Networks. While searching on the topics I came across this great talk by Prof. Tishby which captured my attention and made me think about deep neural networks with a totally different perspective. So I decided to research his findings and learn about this new angle of looking at the working of DNNs. I enjoyed so much reading about the topic that I decided to write a blog post to document his findings and my learnings so that it might help someone like you who might want to learn about it in a much shorter time. The motivation to write this post started from knowing about different information theory measures used in deep learning but I ended up reading much more and learned a lot of exciting stuff that I am eager to share with you. Note that I am new to information theory and learning theory and therefore, there may be places where things are not so clear (expect some rough edges). So without wasting any more mental energy, let's move on to the discussion on Information Theory!
 
 ## Information Theory
 
@@ -235,12 +235,12 @@ _Fig.9 The average trajectory of the hidden layers during the optimization proce
 
 The image above shows the trajectory that the hidden layers follow (the different random initializations are averaged to get the trajectory of each hidden layer). The trajectory from A to C is fitting the data and from C to E is the generalization. Note that all the layers reach the inflection point C more or less together.
 
-For the following section, I will try to explain some bits of the learning theory as explained by Tishby in his talk but I must admit that I am far from an expert in learning theory (in fact I am just a beginner), so expect some rough edges here and there in the explanation.
-
 <center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/it/non_symm.png?raw=True" width = "600"></center>
 
 _Fig.10 The average trajectory of the hidden layers during the optimization process on the information plane and the gradient information for a non-symmetric rule and architecture. This is consistent with the findings for a symmetric architecture. (Image Source: [Tishby and Schwartz-Ziv, 2015](https://arxiv.org/pdf/1703.00810.pdf))_
 
+
+For the following section, I will try to explain some bits of the learning theory as explained by Tishby in his talk but I must admit that I am far from an expert in learning theory (in fact I am just a beginner), so expect some rough edges here and there in the explanation.
 
 ### Learning Theory
 
