@@ -248,11 +248,11 @@ _Fig.10 The average trajectory of the hidden layers during the optimization proc
 
 The generalization bounds defined by the classic learning theory is:
 
-$$\epsilon^2 < \frac{log|H_{\epsilon}|+ \log(1/δ)}{2m}$$
+$$\epsilon^2 < \frac{log\mid H_{\epsilon}\mid + \log(1/δ)}{2m}$$
 
 $$\epsilon$$: Generalization error which is the probability of making an error on the new and unseen data.
 
-$$H_{\epsilon}$$: $$\epsilon$$-cover of the hypothesis class. Typically we assume the size $$|H_{\epsilon}|∼(1/\epsilon)d$$.
+$$H_{\epsilon}$$: $$\epsilon$$-cover of the hypothesis class. Typically we assume the size $$\mid H_{\epsilon}\mid ∼(1/\epsilon)d$$.
 
 $$\delta$$: Confidence.
 
@@ -262,13 +262,13 @@ $$d$$: The VC dimension of the hypothesis.
 
 The above bound shows that the generalization error decreases as the number of training examples increase. The first term in the numerator (the log of the cardinality of the hypothesis class) accounts for the complexity in the learning process and the second term accounts for the confidence in case we see a very bad sample and this is important in problems with a small number of samples.
 
-We approximate the hypothesis class using an $$\epsilon$$ grid (cover it with an epsilon grid in which a finite number of points are there not more than $$\epsilon$$ distance apart from any other hypothesis) and typically we assume: $$|H_{\epsilon}| \sim \Big(\frac{1}{\epsilon}\Big)^d$$ and this comes from geometry and is true for any kind of dimension. The important thing to note is that the size of the cover grows exponentially with the dimension. Once we plug this assumption in the generalized bounds equation, we get $$\frac{d}{m}$$ as the dominant factor. What this means is that when the number of examples is larger than $$d$$, we start to generalize and when it is smaller than $$d$$, we don't generalize. But this is not useful in deep learning because generally in deep learning, we have dimensions in the order of the weights of the network which is very high as compared to the number of examples and therefore, we won't be in a phase where we generalize. But this is not true as we have seen deep neural networks generalizing quite well on unseen examples. This is counterintuitive to the theory that larger networks with large dimensionality are able to achieve better performance with higher expressivity. So there is something else going on which is regularizing the problem and helping the network to perform well even with less number of examples and to explain this, Tishby et al. proposed a new compression bound for the DNN.
+We approximate the hypothesis class using an $$\epsilon$$ grid (cover it with an epsilon grid in which a finite number of points are there not more than $$\epsilon$$ distance apart from any other hypothesis) and typically we assume: $$\mid H_{\epsilon}\mid  \sim \Big(\frac{1}{\epsilon}\Big)^d$$ and this comes from geometry and is true for any kind of dimension. The important thing to note is that the size of the cover grows exponentially with the dimension. Once we plug this assumption in the generalized bounds equation, we get $$\frac{d}{m}$$ as the dominant factor. What this means is that when the number of examples is larger than $$d$$, we start to generalize and when it is smaller than $$d$$, we don't generalize. But this is not useful in deep learning because generally in deep learning, we have dimensions in the order of the weights of the network which is very high as compared to the number of examples and therefore, we won't be in a phase where we generalize. But this is not true as we have seen deep neural networks generalizing quite well on unseen examples. This is counterintuitive to the theory that larger networks with large dimensionality are able to achieve better performance with higher expressivity. So there is something else going on which is regularizing the problem and helping the network to perform well even with less number of examples and to explain this, Tishby et al. proposed a new compression bound for the DNN.
 
 #### New: Input Compression Bound
 
 Now, instead of covering the hypothesis class we will quantize the input which means partitioning the data into groups which are homogeneous with respect to the label. This will mean that the probability of having a wrong label in each group would be less than $$\epsilon$$. These partitions will cover the whole input space. This will lead to the cardinality changing from exponential in the cardinality of $$X$$ to exponential in the cardinality of the partition $$T_{\epsilon}$$ ($$\epsilon$$-partition of the input variable $$X$$):
 
-$$|H_{\epsilon}| \sim 2^{|X|} \rightarrow 2^{|T_{\epsilon}|}$$
+$$\mid H_{\epsilon}\mid  \sim 2^{\mid X\mid } \rightarrow 2^{\mid T_{\epsilon}\mid }$$
 
 In statistical physics, the distribution of many systems can be approximately asymptotically written as a product of independent conditional probabilities. According to the Asymptotic Equipartition Property, the limit of the log of joint probability approaches the entropy $$H(X)$$ of the system.
 
@@ -282,7 +282,7 @@ and we also have the same property for the conditionals:
 
 $$p(x_1,..., x_n \mid T) \approx 2^{-nH(X\mid T)}$$
 
-Since all the patterns are equally likely, as the size of X grows large, we have approximately $$2^{H(X)}$$ patterns. Now to estimate the cardinality of our partition, we use information. We obtain this by using the division between the size of the typical patterns divided by the size of the typical cell. Each cell in the ϵ-partition is of size $$2^{H(X \mid T_{\epsilon})}$$. Therefore we have $$|T_{\epsilon}| \sim \frac{2^{H(X)}}{2^{H(X \mid T_{\epsilon})}} = 2^{I(T_{\epsilon};X)}$$ and the new bound becomes
+Since all the patterns are equally likely, as the size of X grows large, we have approximately $$2^{H(X)}$$ patterns. Now to estimate the cardinality of our partition, we use information. We obtain this by using the division between the size of the typical patterns divided by the size of the typical cell. Each cell in the ϵ-partition is of size $$2^{H(X \mid T_{\epsilon})}$$. Therefore we have $$\mid T_{\epsilon}\mid  \sim \frac{2^{H(X)}}{2^{H(X \mid T_{\epsilon})}} = 2^{I(T_{\epsilon};X)}$$ and the new bound becomes
 
 $$\epsilon^2 < \frac{2^{I(T_{\epsilon};X)} + \log(1/δ)}{2m}$$
 
