@@ -50,11 +50,11 @@ This entropy is equal to the sum of the individual entropies of $$X$$ and $$Y$$ 
 
 The conditional entropy (also called conditional uncertainty) of a random variable $$X$$ given a random variable $$Y$$ is the average conditional entropy over $$Y$$:
 
-$${\displaystyle H(X|Y)=\mathbb {E}_{Y}[H(X|y)]=-\sum_{y\in Y}p(y)\sum_{x\in X}p(x|y)\log p(x|y)=-\sum_{x,y}p(x,y)\log p(x|y)}$$
+$${\displaystyle H(X\mid Y)=\mathbb {E}_{Y}[H(X\mid y)]=-\sum_{y\in Y}p(y)\sum_{x\in X}p(x\mid y)\log p(x\mid y)=-\sum_{x,y}p(x,y)\log p(x\mid y)}$$
 
 One basic property that the conditional entropy satisfies is given by:
 
-$$H(X|Y)=H(X,Y)-H(Y)\,$$
+$$H(X\mid Y)=H(X,Y)-H(Y)\,$$
 
 **4. Mutual Information**
 
@@ -64,11 +64,11 @@ $${\displaystyle I(X;Y)=\mathbb {E}_{X,Y}[SI(x,y)]=\sum_{x,y}p(x,y)\log {\frac {
 
 where $$SI(x,y)$$ is the Specific Mutual Information (also called pointwise mutual information) and is defined as:
 
-$$\operatorname {pmi} (x;y)\equiv \log {\frac {p(x,y)}{p(x)p(y)}}=\log {\frac {p(x|y)}{p(x)}}=\log {\frac {p(y|x)}{p(y)}}$$
+$$\operatorname {pmi} (x;y)\equiv \log {\frac {p(x,y)}{p(x)p(y)}}=\log {\frac {p(x\mid y)}{p(x)}}=\log {\frac {p(y\mid x)}{p(y)}}$$
 
 A basic property of the mutual information is that
 
-$${\displaystyle I(X;Y)=H(X)-H(X|Y)\,}$$
+$${\displaystyle I(X;Y)=H(X)-H(X\mid Y)\,}$$
 
 Intuitively, this means that knowing $$Y$$, we can save an average of $$I(X; Y)$$ bits in encoding $$X$$ compared to not knowing $$Y$$.
 
@@ -82,7 +82,7 @@ KL divergence is used to compare two probability distributions over the same ran
 
 It is given by:
 
-$$D_{\mathrm {KL}}(p(X)\|q(X)) = \mathbb{E}_{x \sim P} \Big[\log \frac{P(x)}{Q(x)} \Big]$$
+$$D_{\mathrm {KL}}(p(X)\mid q(X)) = \mathbb{E}_{x \sim P} \Big[\log \frac{P(x)}{Q(x)} \Big]$$
 
 $$ = \displaystyle \sum_{x\in X}p(x)\log {\frac {p(x)}{q(x)}}$$
 
@@ -155,7 +155,7 @@ $$I(X; Y) \geq I(h_j; Y) \geq I(h_i; Y) \geq I(\hat{Y}; Y)$$
 
 We now define a quantity called the expected IB (Information Bottleneck) distortion which is given by
 
-$$ D_{IB} = E \big[d_{IB}(X, \hat{X}) \big] = I(X; Y | \hat{X})$$
+$$ D_{IB} = E \big[d_{IB}(X, \hat{X}) \big] = I(X; Y \mid  \hat{X})$$
 
 which is the residual information between $$X$$ and $$Y$$, which means the information that is not captured by $$\hat{X}$$. The information distortion of the IB principle provides a new measure of optimality which can be applied not only for the output layer, as done when evaluating the performance of DNNs with other distortion or error measures, but also for evaluating the optimality of each hidden layer or unit of the network. This gives us an important measure of optimality because other cost functions such as the squared error cannot help in measuring the optimality of the hidden layers.
 
@@ -174,10 +174,10 @@ As we move forward through the hidden layers, we slowly reach the optimal line w
 
 <center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/it/en_dec.png?raw=True" width = "550"></center>
 
-_Fig.5 A DNN architecture visualized as encoder and decoder. Any representation of the input, $$T$$, is defined through an encoder, $$P(T|X)$$, and a decoder $$P(\hat{Y} |T)$$, and can be quantified by its information plane coordinates: $$I_X = I(X; T)$$ and $$I_Y = I(T; Y)$$. (Image Source: [Tishby and Schwartz-Ziv, 2015](https://arxiv.org/pdf/1703.00810.pdf))_
+_Fig.5 A DNN architecture visualized as encoder and decoder. Any representation of the input, $$T$$, is defined through an encoder, $$P(T\mid X)$$, and a decoder $$P(\hat{Y} \mid T)$$, and can be quantified by its information plane coordinates: $$I_X = I(X; T)$$ and $$I_Y = I(T; Y)$$. (Image Source: [Tishby and Schwartz-Ziv, 2015](https://arxiv.org/pdf/1703.00810.pdf))_
 
 
-As described earlier, deep neural networks can be considered as a Markov chain of successive representations of input where information is flowing from one hidden layer to the next. Another way to look at the network is using the view above in which we consider the layers in terms of an encoder $$P(T|X)$$ and a decoder $$P(Y|T)$$ where the encoder tries to encode the input $$X$$ into a compressed representation $$T$$ and then the decoder will try to extract the information about the label $$Y$$ using the information present in $$T$$. This view is quite similar to how autoencoders work. Near the first hidden layer, the encoder is simple but the decoder is complicated. As we move towards the last hidden layer, the encoder becomes more and more complex and the decoder becomes simpler. The only two parameters that are important in this scenario are the mutual information of the encoder and the decoder (which are the axes of our information plane). We quantify in this way so as to take the advantage of the invariance of any invertible re-parametrization of T. Moving forward, we will look at some aspects of Stochastic Gradient Descent (SGD) and learn how it can help achieve optimal representations (a minimal sufficient statistic of $$X$$ with respect to $$Y$$ - if such can be found) that we saw on the Information Bottleneck curve.
+As described earlier, deep neural networks can be considered as a Markov chain of successive representations of input where information is flowing from one hidden layer to the next. Another way to look at the network is using the view above in which we consider the layers in terms of an encoder $$P(T\mid X)$$ and a decoder $$P(Y\mid T)$$ where the encoder tries to encode the input $$X$$ into a compressed representation $$T$$ and then the decoder will try to extract the information about the label $$Y$$ using the information present in $$T$$. This view is quite similar to how autoencoders work. Near the first hidden layer, the encoder is simple but the decoder is complicated. As we move towards the last hidden layer, the encoder becomes more and more complex and the decoder becomes simpler. The only two parameters that are important in this scenario are the mutual information of the encoder and the decoder (which are the axes of our information plane). We quantify in this way so as to take the advantage of the invariance of any invertible re-parametrization of T. Moving forward, we will look at some aspects of Stochastic Gradient Descent (SGD) and learn how it can help achieve optimal representations (a minimal sufficient statistic of $$X$$ with respect to $$Y$$ - if such can be found) that we saw on the Information Bottleneck curve.
 
 For the $$K$$-layered DNN architecture using the DPI order as shown in the diagram, we have
 
@@ -280,9 +280,9 @@ $$p(x_1,..., x_n) \approx 2^{-nH(X)}$$
 
 and we also have the same property for the conditionals:
 
-$$p(x_1,..., x_n \mid T) \approx 2^{-nH(X|T)}$$
+$$p(x_1,..., x_n \mid T) \approx 2^{-nH(X\mid T)}$$
 
-Since all the patterns are equally likely, as the size of X grows large, we have approximately $$2^{H(X)}$$ patterns. Now to estimate the cardinality of our partition, we use information. We obtain this by using the division between the size of the typical patterns divided by the size of the typical cell. Each cell in the ϵ-partition is of size $$2^{H(X|T_{\epsilon})}$$. Therefore we have $$|T_{\epsilon}| \sim \frac{2^{H(X)}}{2^{H(X|T_{\epsilon})}} = 2^{I(T_{\epsilon};X)}$$ and the new bound becomes
+Since all the patterns are equally likely, as the size of X grows large, we have approximately $$2^{H(X)}$$ patterns. Now to estimate the cardinality of our partition, we use information. We obtain this by using the division between the size of the typical patterns divided by the size of the typical cell. Each cell in the ϵ-partition is of size $$2^{H(X \mid T_{\epsilon})}$$. Therefore we have $$|T_{\epsilon}| \sim \frac{2^{H(X)}}{2^{H(X \mid T_{\epsilon})}} = 2^{I(T_{\epsilon};X)}$$ and the new bound becomes
 
 $$\epsilon^2 < \frac{2^{I(T_{\epsilon};X)} + \log(1/δ)}{2m}$$
 
