@@ -102,7 +102,7 @@ Jensen-Shannon Divergence is a smoother and symmetric version of measuring the s
 
 $$D_{JS}(p\mid \mid q) = \frac{1}{2}D_{KL}(p\mid \mid \frac{p+q}{2})+\frac{1}{2}D_{KL}(q\mid \mid \frac{p+q}{2})$$
 
-<center><img src = "imgs/it/js.png" width = "600"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/it/js.png?raw=True" width = "600"></center>
 <br>
 
 _Fig.2 Jensen-Shannon divergence, which is symmetric as opposed to KL divergence which is non-symmetric. $$p$$ and $$q$$ are two Gaussian distributions with mean $$0$$ and variance $$1$$, $$m$$ is the average of the two $$(p+q)/2$$ (Image Source: [Lilian Weng's blog post on WGANs vs GANs](https://lilianweng.github.io/lil-log/2017/08/20/from-GAN-to-WGAN.html#kullbackleibler-and-jensenshannon-divergence))_
@@ -145,7 +145,7 @@ Optimally, DNNs should learn to extract the most efficient informative features,
 
 ### Information Characteristics of DNN layers
 
-<center><img src = "imgs/it/dnn_markov.png" width = "600"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/it/dnn_markov.png?raw=True" width = "600"></center>
 
 _Fig.3 A feedforward deep neural network architecture with $$m$$ hidden layers, X is the input, Y is the output and $$\hat{Y}$$ is the predicted output.  The hidden layers form a Markov chain,  $$I(Y ; \hat{Y} )/I(X; Y )$$ quantifies how much of the relevant information is captured by the network. (Image Source: [Tishby and Zaslavsky, 2015](https://arxiv.org/pdf/1503.02406.pdf))_
 
@@ -161,7 +161,7 @@ which is the residual information between $$X$$ and $$Y$$, which means the infor
 
 The analysis done by Prof. Tishby et al. in [this paper](https://arxiv.org/pdf/1503.02406.pdf) shows that even though the input layer of a network contains more information about the target variable $$Y$$, it is not good for generalization because the representation is too complex. So in order to get a good generalization, we also need a good amount of compression. In other words, the hidden layers must compress the input in order to reach a point where the worst case generalization error is tolerable.
 
-<center><img src = "imgs/it/ib_optimal.png" width = "600"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/it/ib_optimal.png?raw=True" width = "600"></center>
 
 _Fig.4 A qualitative information plane with theoretical and practical IB limits. The black line is the optimal achievable IB limit, and the blue lines are sub-optimal IB bifurcations, obtained by forcing the cardinality of $$\hat{X}$$ or remaining in the same representation. The red line corresponds to the upper bound on the out-of-sample IB distortion (mutual information on $$Y$$), when training from a finite sample. (Image Source: [Tishby and Zaslavsky, 2015](https://arxiv.org/pdf/1503.02406.pdf))_
 
@@ -172,7 +172,8 @@ As we move forward through the hidden layers, we slowly reach the optimal line w
 
 ## Opening the black box of DNNs via Information
 
-<center><img src = "imgs/it/en_dec.png" width = "550"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/it/en_dec.png?raw=True" width = "550"></center>
+
 
 _Fig.5 A DNN architecture visualized as encoder and decoder. Any representation of the input, $$T$$, is defined through an encoder, $$P(T|X)$$, and a decoder $$P(\hat{Y} |T)$$, and can be quantified by its information plane coordinates: $$I_X = I(X; T)$$ and $$I_Y = I(T; Y )$$. (Image Source: [Tishby and Schwartz-Ziv, 2015](https://arxiv.org/pdf/1703.00810.pdf))_
 
@@ -196,7 +197,7 @@ To compare different DNN architectures in terms of their efficiency to preserve 
 
 We now talk about the two observed phases during the optimization process using SGD, namely the drift and the diffusion phase. Below is an image of the snapshots of the information plane for three different stages during the SGD optimization process. The left one is the initial stage of the weights, the center one is the situation after 400 epochs and the right one after 9000 epochs. The colors signify the different hidden layers (orange one being the farthest from the input layer) and the points correspond to 50 different random initializations. Note that the last hidden layer lies to the lower left in the plane because it contains very little information about both the input and the output.
 
-<center><img src = "imgs/it/opt_phases.png"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/it/opt_phases.png?raw=True"></center>
 
 _Fig.6 A snapshot of the layers of the network on the information plane during SGD optimization (left - initial weights, mid - after 400 epochs, right - after 9000 epochs). The different points correspond to 50 different weight initializations. (Image Source: [Tishby and Schwartz-Ziv, 2015](https://arxiv.org/pdf/1703.00810.pdf))_
 
@@ -210,7 +211,7 @@ Here is a GIF of the process in action:
 
 For a full video of the process in action, visit [this link](https://www.youtube.com/watch?v=P1A1yNsxMjc&feature=youtu.be). The convergence is really beautiful! Now we will look at the effect of different number of training examples on the convergence on the information plane.
 
-<center><img src = "imgs/it/opt_phase2.png"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/it/opt_phase2.png?raw=True"></center>
 
 _Fig.7 The evolution of the layers with the training epochs in the information plane, for different training samples. On the left - 5% of the data, middle - 45% of the data, and right - 85% of the data. The colors indicate the number of training epochs with Stochastic Gradient Descent from 0 to 10000 epochs. (Image Source: [Tishby and Schwartz-Ziv, 2015](https://arxiv.org/pdf/1703.00810.pdf))_
 
@@ -220,7 +221,7 @@ The above picture shows these two phases converging to different positions on th
 
 The number of epochs that the training process takes in order to reach the green path boundary is very less when compared to the total number of epochs or the number of epochs needed in the compression phase. The training error reduces to a very small quantity at this point after which the diffusion phase starts in which the noise in the gradient dominates the training process. Tishby calls this phase as the forgetting phase and argues that it is the most important phase in the learning process as the model learns to forget. This can be bolstered by the fact that even though all the fitting of the data happens in the first phase, most of the information gain about the label happens in the second phase. Most of the irrelevant information about the patterns is discarded in this phase and this results in an overall compression.
 
-<center><img src = "imgs/it/two_phase.png" width = "600"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/it/two_phase.png?raw=True" width = "600"></center>
 
 _Fig.8 The mean and the standard deviation of the gradients during the SGD optimization process as a function of training epochs in log-log scale. The grey line marks the transition phase from drift to diffusion. (Image Source: [Tishby and Schwartz-Ziv, 2015](https://arxiv.org/pdf/1703.00810.pdf))_
 
@@ -228,7 +229,7 @@ The network shown in the above picture is the architecture used in this experime
 
 One thing to note here is that there is no correlation between the weights or the neurons in the layers in the experiment but still we see a sharp convergence in all the different random initializations. Tishby says that this is what we desire (thing getting concentrated in large limits) and it happens when we have `good order parameters`.
 
-<center><img src = "imgs/it/avg_traj.png" width = "600"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/it/avg_traj.png?raw=True" width = "600"></center>
 
 _Fig.9 The average trajectory of the hidden layers during the optimization process on the information plane. (Image Source: [Quantamagazine's post on the theory by Tishby et al.](https://www.quantamagazine.org/new-theory-cracks-open-the-black-box-of-deep-learning-20170921/))_
 
@@ -236,7 +237,7 @@ The image above shows the trajectory that the hidden layers follow (the differen
 
 For the following section, I will try to explain some bits of the learning theory as explained by Tishby in his talk but I must admit that I am far from an expert in learning theory (in fact I am just a beginner), so expect some rough edges here and there in the explanation.
 
-<center><img src = "imgs/it/non_symm.png" width = "600"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/it/non_symm.png?raw=True" width = "600"></center>
 
 _Fig.10 The average trajectory of the hidden layers during the optimization process on the information plane and the gradient information for a non-symmetric rule and architecture. This is consistent with the findings for a symmetric architecture. (Image Source: [Tishby and Schwartz-Ziv, 2015](https://arxiv.org/pdf/1703.00810.pdf))_
 
@@ -285,7 +286,7 @@ This now means that for each bit of compression of the layers now, we need to do
 
 Revisiting the information plane graph, we see that we need to minimize two kinds of losses as given in the graph (the compression loss and the finite sample loss).
 
-<center><img src = "imgs/it/ib_again.png" width = "600"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/it/ib_again.png?raw=True" width = "600"></center>
 
 _Fig.11 A depiction of the two kinds of losses which need to be minimized (the compression loss and the finite sample loss). (Image Source: [Lilian Weng's post on Information Theory in Deep Learning](https://lilianweng.github.io/lil-log/2017/09/28/anatomize-deep-learning-with-information-theory.html))_
 
@@ -303,7 +304,7 @@ and adding multiple layers changes the time from $$\displaystyle \exp\Big(\sum_m
 
 Since $$\displaystyle \exp\Big(\sum_m \Delta S_m \Big) >> \displaystyle \sum_m \exp \big(\Delta S_m \big) > \max_m \exp \big(\Delta S_m \big)$$, this is an exponential reduction in relaxation time as we increase the number of hidden layers (larger $$m$$).
 
-<center><img src = "imgs/it/hl_fast.png" width = "600"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/it/hl_fast.png?raw=True" width = "600"></center>
 
 _Fig.12 Variation in optimization (compression phase) with different number of hidden layers with the same number of epochs. The optimization time is shorter with more hidden layers. The width of the hidden layers start with 12, and each additional layer has 2 fewer neurons. (Image Source: [Tishby and Schwartz-Ziv, 2015](https://arxiv.org/pdf/1703.00810.pdf))_
 
@@ -313,7 +314,7 @@ As can be seen from the above picture which was the result of the experiment don
 
 Now we know that it is the noise of the gradient which is doing most of the work for us in the compression phase and helping to forget the irrelevant information. Now comes the question of where the layers actually converge?
 
-<center><img src = "imgs/it/train_size.png" width = "600"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/it/train_size.png?raw=True" width = "600"></center>
 
 _Fig.13 Convergence of hidden layers with different amounts of training data. The result is highly consistent with information plane theory. Each line (color) represents a converged network with a different training sample size. (Image Source: [Tishby and Schwartz-Ziv, 2015](https://arxiv.org/pdf/1703.00810.pdf))_
 
