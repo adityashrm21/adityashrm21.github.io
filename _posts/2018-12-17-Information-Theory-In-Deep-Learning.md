@@ -19,6 +19,8 @@ Information theory is based on probability theory and statistics and often conce
 
 ### Basic Concepts
 
+Note: Not all of these concepts are used in Prof. Tishby's work but I decided to include them anyway as they are a part of Information Theory and are often used in Deep Learning.
+
 **1. Entropy**
 
 The Shannon entropy H, in units of bits (per symbol) is given by
