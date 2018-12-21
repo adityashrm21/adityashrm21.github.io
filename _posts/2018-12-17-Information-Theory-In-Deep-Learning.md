@@ -174,13 +174,14 @@ As we move forward through the hidden layers, we slowly reach the optimal line w
 
 <center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/it/en_dec.png?raw=True" width = "550"></center>
 
+_Fig.5 A DNN architecture visualized as encoder and decoder. Any representation of the input, $$T$$, is defined through an encoder, $$P(T|X)$$, and a decoder $$P(\hat{Y} |T)$$, and can be quantified by its information plane coordinates: $$I_X = I(X; T)$$ and $$I_Y = I(T; Y)$$. (Image Source: [Tishby and Schwartz-Ziv, 2015](https://arxiv.org/pdf/1703.00810.pdf))_
 
 
 As described earlier, deep neural networks can be considered as a Markov chain of successive representations of input where information is flowing from one hidden layer to the next. Another way to look at the network is using the view above in which we consider the layers in terms of an encoder $$P(T|X)$$ and a decoder $$P(Y|T)$$ where the encoder tries to encode the input $$X$$ into a compressed representation $$T$$ and then the decoder will try to extract the information about the label $$Y$$ using the information present in $$T$$. This view is quite similar to how autoencoders work. Near the first hidden layer, the encoder is simple but the decoder is complicated. As we move towards the last hidden layer, the encoder becomes more and more complex and the decoder becomes simpler. The only two parameters that are important in this scenario are the mutual information of the encoder and the decoder (which are the axes of our information plane). We quantify in this way so as to take the advantage of the invariance of any invertible re-parametrization of T. Moving forward, we will look at some aspects of Stochastic Gradient Descent (SGD) and learn how it can help achieve optimal representations (a minimal sufficient statistic of $$X$$ with respect to $$Y$$ - if such can be found) that we saw on the Information Bottleneck curve.
 
 For the $$K$$-layered DNN architecture using the DPI order as shown in the diagram, we have
 
-$$I(X; Y ) ≥ I(T_1; Y ) ≥ I(T_2; Y ) ≥ ... ≥ I(T_m; Y ) ≥ I(\hat{Y} ; Y )$$
+$$I(X; Y) ≥ I(T_1; Y) ≥ I(T_2; Y) ≥ ... ≥ I(T_m; Y) ≥ I(\hat{Y} ; Y)$$
 
 and
 
@@ -188,7 +189,7 @@ $$H(X) ≥ I(X; T_1) ≥ I(X; T_2) ≥ ... ≥ I(X; T_m) ≥ I(X; \hat{Y} )$$
 
 These inequalities imply that the information about both the input and desired output decreases as we move forward through the layers due to the DPI property. This is a unique information path for the network formed by $$K$$ monotonic points on the information plane. Each point on the plane corresponds to different possible DNN architectures as the same points are obtained after re-parametrization using any invertible function.
 
-Schwartz-Ziv and Tishby emphasize the fact that a little noise in the function mapping from the input to the output helps in understanding machine learning complexity using information measures. They say that for deterministic functions $$y = f(x)$$, the mutual information is insensitive to the complexity of the function $$f(x)$$. The cure for this problem comes from the noise that is added to the patterns using stochastic versions of the functions (for a simple example, like using the sigmoid function in a perceptron to output the conditional probabilities $$p(y|x)$$ instead of the class itself). Without the stochastic spread of the sigmoid output the mutual information is simply the entropy $$H(Y)$$ independent of the function $$f(x)$$, and there is nothing in the structure of the points $$p(y|x)$$ on the simplex $$[0,1]$$ to hint to the geometry or learning complexity of the rule.
+Schwartz-Ziv and Tishby emphasize the fact that a little noise in the function mapping from the input to the output helps in understanding machine learning complexity using information measures. They say that for deterministic functions $$y = f(x)$$, the mutual information is insensitive to the complexity of the function $$f(x)$$. The cure for this problem comes from the noise that is added to the patterns using stochastic versions of the functions (for a simple example, like using the sigmoid function in a perceptron to output the conditional probabilities $$p(y \mid x)$$ instead of the class itself). Without the stochastic spread of the sigmoid output the mutual information is simply the entropy $$H(Y)$$ independent of the function $$f(x)$$, and there is nothing in the structure of the points $$p(y\mid x)$$ on the simplex $$[0,1]$$ to hint to the geometry or learning complexity of the rule.
 
 To compare different DNN architectures in terms of their efficiency to preserve relevant information in the joint distribution of $$X$$ and $$Y$$, we can visualize them on the information plane using the parameters $$I(T; X)$$ and $$I(T; Y)$$ and explore the effect of different parameters in the training process and the architecture through experiments.
 
