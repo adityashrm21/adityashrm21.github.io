@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Information Theory of Deep Learning - A new perspective
+title: Information Theory of Deep Learning
 author: Aditya Sharma
 date: Dec 17, 2018
 ---
