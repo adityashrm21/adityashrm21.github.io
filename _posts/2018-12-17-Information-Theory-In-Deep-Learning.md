@@ -252,7 +252,7 @@ $$\epsilon^2 < \frac{log\mid H_{\epsilon}\mid + \log(1/δ)}{2m}$$
 
 $$\epsilon$$: Generalization error which is the probability of making an error on the new and unseen data.
 
-$$H_{\epsilon}$$: $$\epsilon$$-cover of the hypothesis class. Typically we assume the size $$ \mid H_{\epsilon}\mid∼(1/\epsilon)d$$.
+$$H_{\epsilon}$$: $$\epsilon$$-cover of the hypothesis class. Typically we assume the size $$ \mid H_{\epsilon}\mid∼(1/\epsilon)^d$$.
 
 $$\delta$$: Confidence.
 
