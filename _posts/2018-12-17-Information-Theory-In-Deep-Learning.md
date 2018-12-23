@@ -181,7 +181,7 @@ _Fig.5 A DNN architecture visualized as encoder and decoder. Any representation 
 
 As described earlier, deep neural networks can be considered as a Markov chain of successive representations of input where information is flowing from one hidden layer to the next. Another way to look at the network is using the view above in which we consider the layers in terms of an encoder $$P(T\mid X)$$ and a decoder $$P(Y\mid T)$$ where the encoder tries to encode the input $$X$$ into a compressed representation $$T$$ and then the decoder will try to extract the information about the label $$Y$$ using the information present in $$T$$. This view is quite similar to how autoencoders work. Near the first hidden layer, the encoder is simple but the decoder is complicated. As we move towards the last hidden layer, the encoder becomes more and more complex and the decoder becomes simpler. The only two parameters that are important in this scenario are the mutual information of the encoder and the decoder (which are the axes of our information plane). We quantify in this way so as to take the advantage of the invariance of any invertible re-parametrization of T. Moving forward, we will look at some aspects of Stochastic Gradient Descent (SGD) and learn how it can help achieve optimal representations (a minimal sufficient statistic of $$X$$ with respect to $$Y$$ - if such can be found) that we saw on the Information Bottleneck curve.
 
-For the $$K$$-layered DNN architecture using the DPI order as shown in the diagram, we have
+For the $$m$$-layered DNN architecture using the DPI order as shown in the diagram, we have
 
 $$I(X; Y) ≥ I(T_1; Y) ≥ I(T_2; Y) ≥ ... ≥ I(T_m; Y) ≥ I(\hat{Y} ; Y)$$
 
