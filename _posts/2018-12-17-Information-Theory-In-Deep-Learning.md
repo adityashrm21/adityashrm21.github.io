@@ -27,7 +27,7 @@ The Shannon entropy H, in units of bits (per symbol) is given by
 
 $$H = -\displaystyle \sum_i p_i \, \log_2 (p_i)$$
 
-where pi is the probability of occurrence of the $$i_{th}$$ possible value of the source symbol. Intuitively, the entropy $$H_X$$ of a random variable $$X$$ gives us a measure of the amount of uncertainty associated with the value of X when only its distribution is known. Below is an example of the entropy of a Bernoulli trial as a function of the success probability (called the binary entropy function):
+where $$p_i$$ is the probability of occurrence of the $$i_{th}$$ possible value of the source symbol. Intuitively, the entropy $$H_X$$ of a random variable $$X$$ gives us a measure of the amount of uncertainty associated with the value of X when only its distribution is known. Below is an example of the entropy of a Bernoulli trial as a function of the success probability (called the binary entropy function):
 
 <center><img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Binary_entropy_plot.svg/400px-Binary_entropy_plot.svg.png" width = "200"></center>
 <br>
