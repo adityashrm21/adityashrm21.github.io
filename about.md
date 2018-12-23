@@ -3,7 +3,7 @@ layout: page
 title: About
 permalink: /about/
 ---
-* [Master of Data Science](https://masterdatascience.ubc.ca/) candidate at [The University of British Columbia](https://www.ubc.ca/)
+* [Master of Data Science](https://masterdatascience.ubc.ca/) candidate at [The University of British Columbia](https://www.ubc.ca/), Vancouver
 * [Mathematics and Computing](https://www.iitg.ac.in/maths/acads/btech_struct.php) graduate from [Indian Institute of Technology Guwahati](http://www.iitg.ac.in/)
 * Active interests in Deep Learning, AI, Data Science and Computer Networks
 * Actively looking for a research role in Deep Learning
