@@ -83,7 +83,7 @@ Reconstruction is different from regression or classification in that it estimat
 
 Let us try to see how the algorithm reduces loss or simply put, how it reduces the error at each step. Assume that we have two normal distributions, one from the input data (denoted by $$p(x)$$) and one from the reconstructed input approximation (denoted by $$q(x)$$). The difference between these two distributions is our error in the graphical sense and our goal is to minimize it, i.e., bring the graphs as close as possible. This idea is represented by a term called the [Kullback–Leibler divergence](https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence). KL-divergence measures the non-overlapping areas under the two graphs and the RBM's optimization algorithm tries to minimize this difference by changing the weights so that the reconstruction closely resembles the input. The graphs on the right-hand side show the integration of the difference in the areas of the curves on the left.
 
-<img src = "https://upload.wikimedia.org/wikipedia/en/a/a8/KL-Gauss-Example.png">
+<img src = "https://upload.wikimedia.org/wikipedia/commons/a/a8/KL-Gauss-Example.png">
 
 This gives us an intuition about our error term. Now, to see how actually this is done for RBMs, we will have to dive into how the loss is being computed.  All common training algorithms for RBMs approximate the log-likelihood gradient given some data and perform gradient ascent on these approximations.
 
