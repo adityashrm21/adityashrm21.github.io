@@ -6,7 +6,6 @@ permalink: /about/
 * [Master of Data Science](https://masterdatascience.ubc.ca/) candidate at [The University of British Columbia](https://www.ubc.ca/), Vancouver
 * [Mathematics and Computing](https://www.iitg.ac.in/maths/acads/btech_struct.php) graduate from [Indian Institute of Technology Guwahati](http://www.iitg.ac.in/)
 * Active interests in Deep Learning, AI, Data Science and Computer Networks
-* Actively looking for a research role in Deep Learning
 * Aims to help create the world a better place to live in
 * Believes in "learning-by-doing"
 
