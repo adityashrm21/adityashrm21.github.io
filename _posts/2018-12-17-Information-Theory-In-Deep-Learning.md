@@ -115,8 +115,7 @@ A Markov property (also called the memoryless property) of a stochastic process 
 
 **8. Data Processing Inequality**
 
-For any Markov chain: $$X \rightarrow Y \rightarrow Z$$, we would have $$I(X;Y)≥I(X;Z)$$  where $$X \rightarrow Y$$ is the mutual information.
-
+For any Markov chain: $$X \rightarrow Y \rightarrow Z$$, we would have $$I(X;Y)≥I(X;Z)$$
 A deep neural network can be viewed as a Markov chain where information is passed from one layer to the next, and thus when we are moving down the layers of a DNN, the mutual information between the layer and the input can only decrease.
 
 **9. Reparametrization invariance**
