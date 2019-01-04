@@ -33,7 +33,7 @@ Using the concept of the derivative above, we can see that the value of the func
 
 <center> <img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/gd/derivative.png?raw=True" width = "500"></center>
 
-Here is a better illustration of how gradient descent is used to reach a local minima using the method described above from [the Deep Learning book](https://www.deeplearningbook.org/) by Bengio, Goodfellow and Courville (I highly recommend this book for someone who wants to go deep into the theory of deep learning concepts).
+Here is a better illustration of how gradient descent is used to reach a local minima using the method described above from [the Deep Learning book](https://www.deeplearningbook.org/) by Goodfellow et al. (I highly recommend this book for someone who wants to go deep into the working of modern deep learning practices).
 
 <center> <img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/gd/descent.png?raw=True" width = "650"></center>
 
