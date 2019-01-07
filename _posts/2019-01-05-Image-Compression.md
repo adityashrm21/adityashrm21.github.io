@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Image Compression using Clustering and Seam Carving
+title: Image Compression: Seam Carving and Clustering
 author: Aditya Sharma
 date: Jan 05, 2019
 ---
