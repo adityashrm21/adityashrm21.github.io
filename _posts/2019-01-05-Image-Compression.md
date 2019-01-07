@@ -63,7 +63,7 @@ def fvs(energy, seam, cost):
 
 The time complexity of this recursive approach is O(M * $3^N$) where M and N are the width and the height of the original image respectively. Now let us use DP to bring this time complexity down.
 
-```Python
+```python
 def find_vertical_seam(energy):
     """
     Function to get the vertical seam in a picture
