@@ -175,6 +175,8 @@ Here is an example with a random image of width and height 31.
 
 The same example was run using DP and it was ~2000 times faster than this ILP implementation. You can try it out yourself using the code from [the repository](https://github.com/adityashrm21/image-compression-techniques).
 
+### Image Compression using K-Means Clustering
+
 Now, we will try compressing images using an Unsupervised Learning algorithm: K-Means Clustering. How this is accomplished is pretty straightforward. We select a suitable number of clusters of pixels in an image as prototypes and then use the prototypes selected instead of the cluster points in the image. Sounds pretty cool right? It is indeed!
 
 Just show me the code!
