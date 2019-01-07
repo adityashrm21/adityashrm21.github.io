@@ -7,7 +7,7 @@ date: Jan 05, 2019
 
 ## Motivation
 
-We often want to resize images (say, for different screen sizes/resolutions). A standard solution to make an image smaller would be to just discard some of the pixels. For example, if we want to make the image exactly half its original width and height, we can cut up the images into $2\times 2$ squares and just keep the upper-left pixel in each square. But what if you want to reduce the size of the image by 30%? Or, what if you want to change the aspect ratio of the image without distorting the image contents? What if we want to compress so that the image takes up only a specific number of bits to store the image? Now things get more complicated. Let us explore some techniques which help us do the above tasks.
+We often want to resize images (say, for different screen sizes/resolutions). A standard solution to make an image smaller would be to just discard some of the pixels. For example, if we want to make the image exactly half its original width and height, we can cut up the images into $$2\times 2$$ squares and just keep the upper-left pixel in each square. But what if you want to reduce the size of the image by 30%? Or, what if you want to change the aspect ratio of the image without distorting the image contents? What if we want to compress so that the image takes up only a specific number of bits to store the image? Now things get more complicated. Let us explore some techniques which help us do the above tasks.
 
 In this post I will use three algorithms to compress images:
 1. Using Dynamic Programming
@@ -30,7 +30,7 @@ In seam carving, we remove one seam at a time until the desired compression is a
 
 ### Seam Carving using Dynamic Programming
 
-As is obvious from the term Dynamic Programming, this process can be done using a recursive approach but it is too slow to be useful for real images. Using DP, we bring this time complexity down to $O(M*N)$. Assuming we already have the energy function and a function to remove the seam found using DP, we just need to look at the code for getting the seam. Also, if we write a function to find a vertical seam, we can simply rotate the image by 90 degrees to get a horizontal seam by applying the same function.
+As is obvious from the term Dynamic Programming, this process can be done using a recursive approach but it is too slow to be useful for real images. Using DP, we bring this time complexity down to $$O(M*N)$$. Assuming we already have the energy function and a function to remove the seam found using DP, we just need to look at the code for getting the seam. Also, if we write a function to find a vertical seam, we can simply rotate the image by 90 degrees to get a horizontal seam by applying the same function.
 
 Let us now look at the function `find_vertical_seam` using a recursive implementation first.
 
@@ -61,7 +61,7 @@ def fvs(energy, seam, cost):
                 fvs(energy, seam+[col-1],cost)),key=lambda x:x[1])
 ```
 
-The time complexity of this recursive approach is O(M * $3^N$) where M and N are the width and the height of the original image respectively. Now let us use DP to bring this time complexity down.
+The time complexity of this recursive approach is O(M * $$3^N$$) where M and N are the width and the height of the original image respectively. Now let us use DP to bring this time complexity down.
 
 ```python
 def find_vertical_seam(energy):
@@ -123,9 +123,9 @@ Integer programming is [NP-complete](https://en.wikipedia.org/wiki/NP-completene
 
 If some decision variables are not discrete the problem is known as a mixed-integer programming problem.
 
-This approach in image compression will take the advantage of the linearity of the problem. To pick a seam, we define $NM$ binary variables $x_{ij}$, where $i$ represents the row and $j$ represents the column, so that we have one variable for each pixel.
+This approach in image compression will take the advantage of the linearity of the problem. To pick a seam, we define $$NM$$ binary variables $$x_{ij}$$, where $$i$$ represents the row and $$j$$ represents the column, so that we have one variable for each pixel.
 
-A vertical seam can only have one pixel per row. If pixel $(i,j)$ is in the seam and $i \lt N$, then one of $(i+1,j-1)$, $(i+1,j)$, or $(i+1,j+1)$ must be in the seam. We can convert these into math using our $x_{ij}$ variables. The first one becomes $\sum_{j=0}^{N-1}x_{ij}=1$ for all $i$. The second constraint comes from the connectivity of the seam: $x_{ij} - x_{i+1j-1} - x_{i+1j} - x_{i+1j+1} \leq 0$. We use the `pulp` package from Python for this implementation. To read more about the package and the documentation, go to [this link](https://pythonhosted.org/PuLP/).
+A vertical seam can only have one pixel per row. If pixel $$(i,j)$$ is in the seam and $$i \lt N$$, then one of $$(i+1,j-1)$$, $$(i+1,j)$$, or $$(i+1,j+1)$$ must be in the seam. We can convert these into math using our $$x_{ij}$$ variables. The first one becomes $$\sum_{j=0}^{N-1}x_{ij}=1$$ for all $$i$$. The second constraint comes from the connectivity of the seam: $$x_{ij} - x_{i+1j-1} - x_{i+1j} - x_{i+1j+1} \leq 0$$. We use the `pulp` package from Python for this implementation. To read more about the package and the documentation, go to [this link](https://pythonhosted.org/PuLP/).
 
 ```python
 import pulp
@@ -217,9 +217,9 @@ def dequantize(quantized_img, colours):
     return img
 ```
 
-We implemented image quantization using the quantize and dequantize functions below. The quantize function takes in an image and, using the pixels as examples and the 3 colour channels as features, runs $k$-means clustering on the data with $2^b$ clusters for some hyperparameter $b$. The code stores the cluster means and returns the cluster assignments. The dequantize function returns a version of the image (the same size as the original) where each pixel's original colour is replaced with the nearest prototype colour.
+We implemented image quantization using the quantize and dequantize functions below. The quantize function takes in an image and, using the pixels as examples and the 3 colour channels as features, runs $$k$$-means clustering on the data with $$2^b$$ clusters for some hyperparameter $$b$$. The code stores the cluster means and returns the cluster assignments. The dequantize function returns a version of the image (the same size as the original) where each pixel's original colour is replaced with the nearest prototype colour.
 
-To understand why this is compression, consider the original image space. Say the image can take on the values $0,1,\ldots,254,255$ in each colour channel. Since $2^8=256$ this means we need 8 bits to represent each colour channel, for a total of 24 bits per pixel. Using our method, we are restricting each pixel to only take on one of $2^b$ colour values. In other words, we are compressing each pixel from a 24-bit colour representation to a $b$-bit colour representation by picking the $2^b$ prototype colours that are "most representative" given the content of the image. The above implementation uses `KMeans` implementation from the `scikit-learn` library in Python.
+To understand why this is compression, consider the original image space. Say the image can take on the values $$0,1,\ldots,254,255$$ in each colour channel. Since $$2^8=256$$ this means we need 8 bits to represent each colour channel, for a total of 24 bits per pixel. Using our method, we are restricting each pixel to only take on one of $$2^b$$ colour values. In other words, we are compressing each pixel from a 24-bit colour representation to a $$b$$-bit colour representation by picking the $$2^b$$ prototype colours that are "most representative" given the content of the image. The above implementation uses `KMeans` implementation from the `scikit-learn` library in Python.
 
 Here are some sample compression images for different values of the hyperparameter `b`:
 
