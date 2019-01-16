@@ -287,7 +287,7 @@ Since all the patterns are equally likely, as the size of X grows large, we have
 
 $$\epsilon^2 < \frac{2^{I(T_{\epsilon};X)} + \log(1/δ)}{2m}$$
 
-This means that for each bit of compression of the layers now, we need to double the number of examples. this gives us a better bound than before as now, to compress the information by k bits, we need to increase the size of our sample by $$2^k$$ times the original size. Tishby argues that this bound is much more realistic than the previous bound.
+This now means that for each bit of compression of the layers, we need to double the number of examples. this gives us a better bound than before as now, to compress the information by k bits, we need to increase the size of our sample by $$2^k$$ times the original size. Tishby argues that this bound is much more realistic than the previous bound.
 
 Revisiting the information plane graph, we see that we need to minimize two kinds of losses as given in the graph (the compression loss and the finite sample loss).
 
