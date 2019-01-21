@@ -228,7 +228,7 @@ Here are some sample compression images for different values of the hyperparamet
 <center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/ic/km_mand.png?raw=True" width = "600"></center>
 <br>
 
-You can find the jupyter notebook with the full code [here](https://github.com/adityashrm21/image-compression-techniques/blob/master/image-compression_kmeans.ipynb). We clearly see how increasing `b` improves the quality of the image and I found that at `b = 6`, the compressed image was almost indistinguishable from the original image.
+You can find the jupyter notebook with the full code [here](https://github.com/adityashrm21/image-compression-techniques). We clearly see how increasing `b` improves the quality of the image and I found that at `b = 6`, the compressed image was almost indistinguishable from the original image.
 
 ## Conclusion
 
