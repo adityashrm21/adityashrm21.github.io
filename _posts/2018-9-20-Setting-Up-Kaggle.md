@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Setting up Kaggle API on Mac
+title: Setting up Kaggle API on Mac/Linux
 ---
 
 Hello there!
 
-If you are like me and want to use Kaggle API instead of manual clicks here and there on the Kaggle website to get your task done, this post is for you!
+If you are like me and want to use Kaggle API instead of manual clicks here and there on the Kaggle website to get your task done, this post is for you! Note: This post is most useful for folks using a Mac or a Linux environment.
 
 Let's get started!
 
