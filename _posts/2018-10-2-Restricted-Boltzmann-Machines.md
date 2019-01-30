@@ -59,7 +59,7 @@ where $$\textbf{h}^{(1)}$$ and $$\textbf{v}^{(0)}$$ are the corresponding vector
 
 Now this image shows the reverse phase or the **reconstruction** phase. It is similar to the first pass but in the opposite direction. The equation comes out to be:
 
-$$\textbf{v}^{(1)} = S(\textbf{h}^{(1)}W^T + \textbf{a})$$
+$$\textbf{v}^{(1)} = S(\textbf{h}^{(1)}W^T + \textbf{b})$$
 
 where $$\textbf{v}^{(1)}$$ and $$\textbf{h}^{(1)}$$ are the corresponding vectors (column matrices) for the visible and the hidden layers with the superscript as the iteration and $$\textbf{b}$$ is the visible layer bias vector.
 
