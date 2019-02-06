@@ -3,6 +3,8 @@ layout: post
 title: Building a Book Recommender System using Restricted Boltzmann Machines
 ---
 
+Edit: Repository with complete code to run and test the system can be found [here](https://github.com/adityashrm21/Book-Recommender-System-RBM).
+
 ## Motivation
 
 <center><img src = "https://www.lislelibrary.org/sites/default/files/assets/images/MyNextBook.jpg"></center>
@@ -12,7 +14,7 @@ I am an avid reader (at least I think I am!) and one of the questions that often
 
 We will try to create a book recommendation system in Python which can recommend books to a reader on the basis of the reading history of that particular reader. Once the model is created, it can be deployed as a web app which people can then actually use for getting recommendations based on their reading history. Let's move forward with the task as we learn step by step how to create such a system in Python.
 
-`Note`: This post is meant to be concise and to the point. We won't be deviating from the relevant task to learn about each and every related concept in too much detail. In short, this post assumes some prior knowledge/intuition about Neural Networks and the ability to code in and understand Python. But I am sure even if you don't have a prior experience with these things, you still get to take away a lot! So read on....
+`Note`: This post is meant to be concise and to the point. We won't be deviating from the relevant task to learn each and every involved concept in too much detail. In short, this post assumes some prior knowledge/intuition about Neural Networks and the ability to code in and understand Python. But I am sure even if you don't have a prior experience with these things, you still get to take away a lot! So read on....
 
 <center><img src = "https://media.giphy.com/media/3o7abuqxszgO6pFb3i/giphy.gif"></center>
 <br>
