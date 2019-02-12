@@ -50,6 +50,8 @@ The data looks something like this:
 
 Now, we will build a simple 1 hidden layer network on this data using ReLU activation and see what we get:
 
+<code data-gist-id="6c2d1050f16ecc74cc41833c323292b6" data-gist-line="2-4"></code>
+
 ```python
 # defining the model architecture
 model = Sequential()
