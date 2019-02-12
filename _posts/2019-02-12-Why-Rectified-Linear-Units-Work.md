@@ -46,7 +46,7 @@ y = np.cos(6*X) + npr.randn(N,1)*0.08
 ```
 The data looks something like this:
 
-<center><img src = "imgs/relu/toy_data.png" width = "500"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/relu/toy_data.png?raw=True" width = "500"></center>
 
 Now, we will build a simple 1 hidden layer network on this data using ReLU activation and see what we get:
 
@@ -69,7 +69,7 @@ print(loss)
 
 After running the code above we obtain a model of the data which very well captures its non-linearity. After plotting the same above the data, we get something like this:
 
-<center><img src = "imgs/relu/model_relu.png" width = "500"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/relu/model_relu.png?raw=True" width = "500"></center>
 
 You can view the complete code here on [this GitHub gist](https://gist.github.com/adityashrm21/6c2d1050f16ecc74cc41833c323292b6).
 
