@@ -37,37 +37,15 @@ Now looking at the linear structure of ReLUs, it is not very intuitive to unders
 
 Let us first generate a synthetic dataset to be modeled and plot it:
 
-```python
-# generate synthetic 1D data
-npr.seed(42)
-N = 200
-X = npr.rand(N,1)
-y = np.cos(6*X) + npr.randn(N,1)*0.08
-```
+<code data-gist-id="6c2d1050f16ecc74cc41833c323292b6" data-gist-line="8-12"></code>
+
 The data looks something like this:
 
 <center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/relu/toy_data.png?raw=True" width = "500"></center>
 
 Now, we will build a simple 1 hidden layer network on this data using ReLU activation and see what we get:
 
-<code data-gist-id="6c2d1050f16ecc74cc41833c323292b6" data-gist-line="2-4"></code>
-
-```python
-# defining the model architecture
-model = Sequential()
-model.add(Dense(30, input_dim=1, activation='relu'))
-model.add(Dense(1, activation='linear'))
-
-# Compile model
-model.compile(loss='mean_squared_error', optimizer="adam")
-
-# Fit the model
-model.fit(X, y, epochs=1000, verbose=0)
-
-# evaluate the model
-loss=model.evaluate(X, y,verbose=0)
-print(loss)
-```
+<code data-gist-id="6c2d1050f16ecc74cc41833c323292b6" data-gist-line="19-32"></code>
 
 After running the code above we obtain a model of the data which very well captures its non-linearity. After plotting the same above the data, we get something like this:
 
