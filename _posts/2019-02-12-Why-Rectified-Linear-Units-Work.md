@@ -7,7 +7,7 @@ date: Feb 12, 2019
 
 ## Introduction
 
-**NOTE**: This post assumes a basic knowledge of artificial neural networks work.
+**NOTE**: This post assumes a basic knowledge of artificial neural networks.
 
 If you have a basic idea of how neural networks work, you know that they can model really complex non-linear functions and this ability is possessed by them through the use of non-linear activation functions such as the sigmoid function or the hyperbolic-tangent function. For a detailed list of activation functions used in neural networks, visit [this Wikipedia page](https://en.wikipedia.org/wiki/Activation_function). In this post, we will talk about why we need activation functions and how do ReLUs perform this job even when they themselves are linear in structure.
 
