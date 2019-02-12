@@ -71,7 +71,11 @@ After running the code above we obtain a model of the data which very well captu
 
 <center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/relu/model_relu.png?raw=True" width = "500"></center>
 
+We can see how small straight lines are joined to model the non-linear curve made by the data.
+
 You can view the complete code here on [this GitHub gist](https://gist.github.com/adityashrm21/6c2d1050f16ecc74cc41833c323292b6).
+
+{% gist 6c2d1050f16ecc74cc41833c323292b6 %}
 
 ## More on ReLUs
 
