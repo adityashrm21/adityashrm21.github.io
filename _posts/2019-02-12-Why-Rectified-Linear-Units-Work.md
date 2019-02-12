@@ -28,7 +28,7 @@ Now you must be thinking "I know all of this! What's the point of this post?" wh
 
 Rectified Linear Units (ReLUs) are a relatively newer type of activation functions used in neural networks and they have a simple mathematical form $$g(z) = max\{0, z\}$$. Graphically, they look like the plot below:
 
-<center><img src = "imgs/relu/relu.png" width = "500"></center>
+<center><img src = "https://github.com/adityashrm21/adityashrm21.github.io/blob/master/_posts/imgs/relu/relu.png?raw=True" width = "500"></center>
 
 It was not quite long ago (2011) when it was demonstrated that ReLUs were better for the training of deep neural networks when compared to the traditional smoother sigmoid or tangent activation functions. In general, it is difficult to predict in advance which activation function would work best in a given scenario and hence, trial and error is involved to a certain degree to figure out the best activation function. This is done by intuiting that a certain activation function would work well, and then testing the performance of the network using that function and evaluating the performance on a validation set.
 
