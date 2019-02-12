@@ -76,6 +76,7 @@ There are many other variants and improvements over ReLU which you can learn mor
 - [A practical guide to ReLU by Danqing Liu](https://medium.com/tinymind/a-practical-guide-to-relu-b83ca804f1f7)
 - [Searching for Activation Functions, Ramachandran et al. (Google)](https://arxiv.org/pdf/1710.05941.pdf)
 - [Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUS), Clevert et al.](https://arxiv.org/pdf/1511.07289.pdf)
+- [Understanding Locally Competitive Networks, Srivastava et al.](https://arxiv.org/pdf/1410.1165.pdf)
 
 ### Conclusion
 
