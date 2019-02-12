@@ -73,7 +73,7 @@ After running the code above we obtain a model of the data which very well captu
 
 We can see how small straight lines are joined to model the non-linear curve made by the data.
 
-You can view the complete code here on [this GitHub gist](https://gist.github.com/adityashrm21/6c2d1050f16ecc74cc41833c323292b6).
+Here is the complete code for you:
 
 {% gist 6c2d1050f16ecc74cc41833c323292b6 %}
 
