@@ -9,7 +9,9 @@ permalink: /about/
 * Aims to help create the world a better place to live in
 * Believes in "learning-by-doing"
 
-I am deeply fascinated by research in AI and want to become a part of it and contribute as much as I can to improve the quality of human life and make the world more smart! I am particularly interested in Deep Generative models. My current pursuit of a degree in Data Science is helping me get one step closer to my goal.
+I am deeply fascinated by research in AI and want to become a part of it and contribute as much as I can to improve the quality of human life and make the world more smart! I am particularly interested in Deep Generative models.
+
+I started this blog for my future self and to help other people interested in this field to understand some common and not-so-common topics in AI!
 
 When I am not coding, you might find me going outdoors or for long runs, or playing guitar!
 
