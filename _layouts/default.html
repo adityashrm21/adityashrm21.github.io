@@ -1,60 +1,155 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+<html lang="en">
+{% include head.html %}
 
-    {% include meta.html %}
-
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
-
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
-
-    {% if site.google_analytics and jekyll.environment == 'production' %}
-    {% include analytics.html %}
-    {% endif %}
-    {% seo %}
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.7.1/gist-embed.min.js"></script>
-  </head>
-
-  <body>
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
-
-          <div class="site-info">
-            <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-            <p class="site-description">{{ site.description }}</p>
-          </div>
-
-          <nav>
-            <a href="{{ site.baseurl }}/">Blog</a>
-            <a href="{{ site.baseurl }}/about">About</a>
-          </nav>
-        </header>
-      </div>
+<body>
+    <div id="particles-js" class="particles-large">
+        <div class="main-title">
+            <h1 class="site-title">{{site.username}}</h1>
+            <h2 class="site-subtitle">{{site.user_subtitle}}</h2>
+            <div class="icons-header">
+                <a aria-label="Send email" href="mailto:{{site.email}}"><i class="icon fa fa-envelope"></i></a>
+                <a aria-label="My Facebook" target="_blank" href="https://fb.com/{{site.facebook_username}}"><i class="icon fa fa-facebook" aria-hidden="true"></i></a>
+                <a aria-label="My Instagram" target="_blank" href="https://instagram.com/{{site.instagram_username}}"><i class="icon fa fa-instagram" aria-hidden="true"></i></a>
+                <a aria-label="My Twitter" target="_blank" href="https://twitter.com/{{site.twitter_username}}"><i class="icon fa fa-twitter" aria-hidden="true"></i></a>
+                <a aria-label="My Github" target="_blank" href="https://github.com/{{site.github_username}}"><i class="icon fa fa-github-alt" aria-hidden="true"></i></a>
+              </div>
+            <a class="link" href="#about" data-scroll>About Me</a>
+            <a class="link" href="#projects" data-scroll>Portfolio</a>
+        </div>
+        <a class="down" href="#about" data-scroll><i class="icon fa fa-chevron-down" aria-hidden="true"></i></a>
     </div>
+    <div class="content">
+        <section id="about">
+            <div class="container">
+                <div class="about">
+                    <h2> About Me </h2>
+                    <p> {{site.user_description}} <a href = "about.html" style="text-decoration: none; color: black;"> <b>Read More </b><i class="icon fa fa-chevron-right" aria-hidden="true"></i> </a></p> 
+                    <div class="user">
+                        <div class="tech">
+                          <h3>Code</h3>
+                          <img src="../img/r.png" width="64" height="64">
+                          <i class="devicon-python-plain-wordmark", style="color: #505050"></i>
+                          <img src="../img/sqlite.png" width="58" height="64">
+                          <p><b>Languages I commonly use.</b> Some of the other languages I have prior experience working with include C++, C, Matlab, PHP, Java, etc.</p>
+                        </div>
+                        <div class="tech">
+                          <h3>Design</h3>
+                          <i class="devicon-html5-plain-wordmark colored"></i>
+                          <i class="devicon-bootstrap-plain-wordmark colored"></i>
+                          <i class="devicon-javascript-plain colored"></i>
+                          <p><b>Languages and libraries I use for web development.</b> Some of the other languages and libraries I use include CSS, jquery, MySQL, etc.</p>
+                        </div>
+                        <div class="tech">
+                          <h3>Tools</h3>
+                          <img src="../img/azure.png" width="64" height="64">
+                          <i class="devicon-docker-plain-wordmark colored"></i>
+                          <img src="../img/tableau.png" width="64" height="64">
+                          <p><b>Tools I am commonly use.</b> Some of the other tools and libraries that I have experience working with include JIRA, GitHub, Codecov, etc.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="projects">
+            <div class="container projects">
+                <h2>Portfolio</h2>
+                {% for post in site.posts%}
 
-    <div id="main" role="main" class="container">
-      {{ content }}
+                
+                <!-- https://stackoverflow.com/questions/8980192/liquid-templates-even-odd-items-in-for-loop?rq=1 -->
+                    {% assign mod = forloop.index | modulo: 2 %}
+                    {% if mod == 0 %}
+                    <!-- even -->
+                    <div class="row project img-right">
+                        <div class="col-md-6">
+                            <h4>{{ post.title }}</h4>
+                            <ul>
+                                {% for tag in post.tags %}
+                                    <li>{{ tag }}</li>
+                                {% endfor %}
+                            </ul>
+                            <p>{{ post.excerpt }}</p>
+                            {% if post.site %}
+                                <a class="project-link" href="{{ post.url }}">Read more</a>
+                            {% endif %}
+                            {% if post.code %}
+                                <a class="project-link" href="{{ post.code }}">Check it out</a>
+                            {% endif %}
+                            {% if post.demo %}
+                                <a class="project-link" href="{{ post.demo }}">Try it</a>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            <img alt="{{ post.image_alt }}" src="{{ post.image | prepend: site.baseurl }}" />
+                        </div>
+                    </div>
+
+                    <div class="row project img-left">
+                        <div class="col-md-6">
+                            <img alt="{{ post.image_alt }}" src="{{ post.image | prepend: site.baseurl }}" />
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{{ post.title }}</h4>
+                            <ul>
+                                {% for tag in post.tags %}
+                                    <li>{{ tag }}</li>
+                                {% endfor %}
+                            </ul>
+                            <p>{{ post.excerpt }}</p>
+                            {% if post.site %}
+                                <a class="project-link" href="{{ post.url }}">Read more</a>
+                            {% endif %}
+                            {% if post.code %}
+                                <a class="project-link" href="{{ post.code }}" target="_blank" style="width:120px">GitHub Repo</a>
+                            {% endif %}
+                            {% if post.demo %}
+                                <a class="project-link" href="{{ post.demo }}" target="_blank">Try it</a>
+                            {% endif %}
+                        </div>
+                </div>
+
+
+                    {% else %}
+                    <!-- odd -->
+                    <div class="row project">
+                            <div class="col-md-6">
+                                <img alt="{{ post.image_alt }}" src="{{ post.image | prepend: site.baseurl }}" />
+                            </div>
+                            <div class="col-md-6">
+                                <h4>{{ post.title }}</h4>
+                                <ul>
+                                    {% for tag in post.tags %}
+                                        <li>{{ tag }}</li>
+                                    {% endfor %}
+                                </ul>
+                                <p>{{ post.excerpt }}</p>
+                                {% if post.site %}
+                                    <a class="project-link" href="{{ post.url }}">Read more</a>
+                                {% endif %}
+                                {% if post.code %}
+                                    <a class="project-link" href="{{ post.code }}" target="_blank" style="width:120px">GitHub Repo</a>
+                                {% endif %}
+                                {% if post.demo %}
+                                    <a class="project-link" href="{{ post.demo }}" target="_blank">Try it</a>
+                                {% endif %}
+                            </div>
+                    </div>
+
+                    {% endif %}
+
+                    <!-- https://stackoverflow.com/questions/34568011/add-an-element-on-the-last-jekyll-loop-of-posts -->
+                    {% if forloop.last == false %}
+                        <hr>
+                    {% endif %}
+
+
+                {% endfor %}
+            </div>
+        </section>
+        {{ content }}
     </div>
+    {% include footer.html %}
+</body>
 
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          {% include svg-icons.html %}
-        </footer>
-      </div>
-    </div>
-
-    {% include analytics.html %}
-    {% include disqus.html %}
-    <script id="dsq-count-scr" src="//adityashrm21-github-io.disqus.com/count.js" async></script>
-  </body>
 </html>

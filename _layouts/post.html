@@ -1,31 +1,31 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
 
-<article class="post">
-  <h1>{{ page.title }}</h1>
+<body>
+    <a href="/">
+        <div id="particles-js" class="particles-small">
+            <div class="post-title">
+                <h1 class="site-title">{{site.username}}</h1>
+            </div>
+        </div>
+    </a>
+    <div>
+        <iframe width="100%" height="400px" src="{{ page.site | prepend: site.baseurl }}" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{{ "/js/app.js" | prepend: site.baseurl }}"></script>
+    <script>
+        $.ajax({
+            type: 'POST',
+            url: 'https://app-analytic.herokuapp.com/track/alexlockhartca',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                path: location.pathname,
+            }),
+        });
+    </script>
+</body>
 
-  <div class="entry">
-    {{ content }}
-  </div>
-
-  <div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
-  </div>
-
-  {% include disqus.html %}
-</article>
-
-<script>
-  $("script[type='math/tex']").replaceWith(function() {
-      var tex = $(this).text();
-      return katex.renderToString(tex, {displayMode: false});
-  });
-
-  $("script[type='math/tex; mode=display']").replaceWith(function() {
-      var tex = $(this).html();
-      return katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: true});
-  });
-</script>
-
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript" ></script>
+</html>
