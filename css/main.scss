@@ -1,0 +1,436 @@
+---
+---
+
+// Variables
+
+$main: #0c0111;
+$sec: #4B5664;
+$purple: #54516A;
+$light: #FFF;
+$cut: 768px;
+
+// Common
+
+@import url( 'https://fonts.googleapis.com/css?family=Montserrat');
+
+.tech {
+    margin:10px
+}
+.user {
+    text-align:center;
+    font-size:60px;
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:space-between
+}
+
+.user p{font-size:16px}@media only screen and (min-width:550px){.user{flex-wrap:nowrap;font-size:75px}}
+
+iframe {
+    padding: 0%;
+    margin: 0%;
+    height: calc(100vh - 117px);
+    width: 100%;
+    border: none;
+    border-color: #1a222c;
+    }   
+
+body {
+    font-size: 100%;
+    line-height: 1.5;
+    font-family: 'Montserrat', sans-serif;
+    background: $main;
+    height: 100vh;
+    margin: 0%;
+    padding: 0%;
+}
+
+
+h1 {
+    font-size: 50px;
+    font-weight: 300;
+    display: block;
+    line-height: 1;
+    letter-spacing: -.1rem;
+}
+
+h2 {
+    font-size: 40px;
+    display: block;
+    line-height: 1;
+    margin: 5px 0 10px;
+}
+
+h3 {
+    font-size: 30px;
+}
+
+h4 {
+    font-size: 25px;
+}
+
+.content {
+    background: $light;
+    padding: 20px 0 100px;
+}
+
+.container {
+    width: 70%;
+    margin: auto;
+}
+
+.project-link {
+    display: block;
+    float: left;
+    width: 100px;
+    margin: 3px;
+    padding: 5px;
+    color: $main;
+    background-color: transparent;
+    border: 1px solid $main;
+    border-radius: 10px;
+    text-align: center;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease-out, background-color 0.3s ease-out, border-color 0.3s ease-out;
+
+    &:hover {
+        background-color: $purple;
+        border-color: $purple;
+        color: #fff;
+        transition: color 0.3s ease-in, background-color 0.3s ease-in, border-color 0.3s ease-in;
+    }
+
+    &:active {
+        background-color: $purple;
+        border-color: $purple;
+        color: #fff;
+        transition: color 0.3s ease-in, background-color 0.3s ease-in, border-color 0.3s ease-in;
+    }
+}
+
+.footer {
+    bottom: 0pt;
+    background-image: url("/img/footer.jpg"); 
+    padding: 10px 0;
+    text-align: center;
+    color: #FFF;
+
+    .love {
+        color: red;
+    }
+
+    a {
+        text-decoration: none;
+        margin: 0;
+        color: #FFF;
+
+        &:hover {
+            color: $sec;
+        }
+
+        &:active {
+            color: $sec;
+        }
+    }
+}
+
+// Pulse Animation
+
+@-webkit-keyframes pulse {
+    from {
+        -ms-filter:  "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+        filter: alpha(opacity=40);
+        opacity: 0.4;
+        top: 0;
+    }
+
+    50% {
+        -ms-filter: none;
+        -webkit-filter: none;
+        filter: none;
+        opacity: 1;
+        top: -10px;
+    }
+
+    to {
+        -ms-filter:  "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+        filter: alpha(opacity=40);
+        opacity: 0.4;
+        top: 0;
+    }
+}
+@keyframes pulse {
+    from {
+        -ms-filter:  "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+        filter: alpha(opacity=40);
+        opacity: 0.4;
+        top: 0;
+    }
+
+    50% {
+        -ms-filter: none;
+        -webkit-filter: none;
+        filter: none;
+        opacity: 1;
+        top: -10px;
+    }
+
+    to {
+        -ms-filter:  "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+        filter: alpha(opacity=40);
+        opacity: 0.4;
+        top: 0;
+    }
+}
+
+
+// Default Layout
+
+#particles-js {
+    display: block;
+    vertical-align: bottom;
+    background-image: url("/img/blue-nebula.jpg"); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.particles-large {
+    width: 100vw;
+    min-height: 100vh;
+    .particles-js-canvas-el {
+        width: 100vw !important;
+        height: 100vh !important;
+    }
+}
+
+.particles-small {
+    width: 100vw;
+    min-height: 117px;
+    .particles-js-canvas-el {
+        width: 100vw !important;
+        height: 160px !important;
+    }
+}
+
+@media only screen and (min-width: 347px) {
+    .particles-small {
+        .particles-js-canvas-el {
+            height: 117px !important;
+        }
+    }
+}
+
+.main-title {
+    z-index: 1;
+    text-align: center;
+    color: #FFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: 0 auto;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    .site-title {
+        @media only screen and (min-width:$cut) {
+            margin: 0;
+            font-size: 100px;
+        }
+    }
+
+    .site-subtitle {
+        @media only screen and (min-width:$cut) {
+            font-size: 40px;
+        }
+    }
+
+    .link {
+        color: #FFF;
+        display: inline-flex;
+        justify-content: space-between;
+        text-decoration: none;
+        font-size: 15px;
+        margin: 10px;
+        @media only screen and (min-width:$cut) {
+            font-size: 20px;
+        }
+    }
+}
+
+.icons-header {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    .icon {
+        text-align: center;
+        color: #FFF;
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
+        padding: 10px;
+        margin: 2px;
+        border-radius: 50%;
+        border: 2px solid #FFF;
+        transition: all 0.7s;
+
+        &:hover {
+            color: $main;
+            background: #FFF;
+        }
+
+        &:active {
+            color: $main;
+            background: #FFF;
+        }
+        @media only screen and (min-width:$cut) {
+            width: 35px;
+            height: 35px;
+            font-size: 35px;
+        }
+    }
+}
+
+.down {
+    color: #FFF;
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+
+    .icon {
+        position: absolute;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        fill: #fff;
+        -webkit-animation: pulse 1.3s infinite;
+        animation: pulse 1.3s infinite;
+
+        &:hover {
+            color: $sec;
+        }
+
+        &:active {
+            color: $sec;
+        }
+    }
+}
+
+.about {
+    padding: 7% 0% 7% 0%;
+    text-align: center;
+}
+
+.skills {
+    .skill {
+        padding: 10px;
+        text-align: center;
+        font-size: 50px;
+    }
+}
+
+@media only screen and (min-width: 680px) {
+    .skills {
+        .skill {
+            padding: 10px;
+            text-align: center;
+            font-size: 90px;
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .skills {
+        .skill {
+            padding: 10px;
+            text-align: center;
+            font-size: 110px;
+        }
+    }
+}
+
+.experiences,
+.projects {
+    .experience,
+    .project {
+        margin: 20px 0;
+
+        h4 {
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            overflow: hidden;
+            padding: 0;
+
+            li {
+                float: left;
+                background: #eee;
+                border-radius: 3px;
+                color: #999;
+                height: 26px;
+                line-height: 26px;
+                padding: 3px 10px;
+                margin: 5px;
+                position: relative;
+            }
+        }
+    }
+}
+
+// Posts Layout
+
+.post-title {
+    z-index: 1;
+    margin: 0 auto;
+    color: #FFF;
+    position: absolute;
+
+    h1 {
+        margin-left: 33.5px;
+    }
+}
+
+.post {
+    img {
+        width: 400px;
+        max-width: 100%;
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .img-right {
+      display: none;
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    .img-left {
+      display: none;
+    }
+  }

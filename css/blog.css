@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    font-family: "Courier New", Courier, monospace;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "Courier New", Courier, monospace
+}
+
+.shift {
+    position: relative;
+    left: 6%;
+}
+
+.middle {
+    text-align:center;
+    width:100%;
+    color: black;
+}
